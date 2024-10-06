@@ -5,7 +5,6 @@ institute: "Prospera"
 date: last-modified
 date-format: long
 bibliography: ref.bib
-jupyter: nbstata
 abstract: "This report presents our analysis on mainly estimating elasticity and forecasting future excise and revenue for DGCE. We find that the elasticity of demand to be vary between -0.5 to -1.1. We also find a strong case for tax-price pass-through for SKM and SPM tobacco type. Our findings corroborates most literature on the Indonesian tobacco use. Unfortunately data limits how much and how robust the analysis can get. In particular, we find very little value of analysis on electric cigarettes, which maindly due to only one year datapoint available for study."
 abstract-title: "executive summary"
 format:
@@ -75,17 +74,16 @@ library(modelsummary)
 library(kableExtra)
 library(gt)
 library(RStata)
-options("RStata.StataPath" = "C:\Program Files\Stata17\StataMP-64.exe")
+options("RStata.StataPath" = "C:/Program Files/Stata17/StataMP-64")
 options("RStata.StataVersion" = 17)
 theme_set(theme_classic())
 
 
 ```
 
-```{Stata}
-import excel "data\excisedata.xlsx", sheet("Sheet1") firstrow
-sureg (qskm1 lskm1 lskm2 lspm1 lspm2 lskt1a lskt1b lskt2 lskt3) (qskm2 lskm1 lskm2 lspm1 lspm2 lskt1a lskt1b lskt2 lskt3)
-
+```{stata}
+sysuse auto, clear
+describe
 ```
 
 ```{r}
