@@ -1,3 +1,6 @@
+*.xl*
+*.dta
+
 # Prerequisites
 *.d
 
