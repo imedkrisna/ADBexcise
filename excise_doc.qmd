@@ -74,16 +74,16 @@ library(modelsummary)
 library(kableExtra)
 library(gt)
 library(RStata)
-options("RStata.StataPath" = "C:/Program Files/Stata17/StataMP-64")
-options("RStata.StataVersion" = 17)
+
 theme_set(theme_classic())
 
 
 ```
 
-```{stata}
-sysuse auto, clear
-describe
+```{r}
+options("RStata.StataPath"="\"C:\\Program Files\\Stata17\\StataMP-64\"")
+options("RStata.StataVersion" = 17)
+
 ```
 
 ```{r}
