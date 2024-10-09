@@ -19,13 +19,13 @@ gen plskt3=pskt3/lskt3
 
 
 
-twoway (line qskm1 mo) (line qskm2 mo) (line qspm1 mo) (line qspm2 mo) (line qskt1a mo) (line qskt1b mo) (line qskt2 mo) (line qskt3 mo)
+twoway (line qskm1 qskm2 qspm1 qspm2 qskt1a qskt1b qskt2 qskt3 mo), legend(pos(6) col(4)) 
 graph display Graph, ysize(6) xsize(9) scheme(s1rcolor)
 
 graph export "pic/demand.png", as(png) name("Graph")
 
 // graphing the HTP/HJE pattern
 
-twoway (line plskm1 mo) (line plskm2 mo) (line plspm1 mo) (line plspm2 mo) (line plskt1a mo) (line plskt1b mo) (line plskt2 mo) (line plskt3 mo) 
-
+twoway (line plskm1 plskm2 plspm1 plspm2 plskt1a plskt1b plskt2 plskt3 mo), legend(pos(6) col(4)) 
+graph display Graph, ysize(6) xsize(9) scheme(s1rcolor)
 graph export "pic/ratio.png", as(png) name("Graph")
