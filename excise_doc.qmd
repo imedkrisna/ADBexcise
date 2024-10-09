@@ -55,6 +55,8 @@ On the last note, none of those are looking at electric cigarettes.
 [^2]: interestingly, they also sourced the data from DGCE.
 [^3]: adult male smokers increase in share from 60.6% in 2000 to 76.1%
 
+On Method, we generally use @zellner which developed Seemingly Unrelated Regression (SUR) which is widely used for cross-price elasticity calculation.
+
 ## Data
 
 This paper relies solely on data sourced by DGCE. The data contains information on both traditional and e-cigarettes, albeit on different details. We will first discuss about the traditional cigarettes and then proceed to e-cigarettes.
