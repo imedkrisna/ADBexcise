@@ -34,7 +34,7 @@ Table 1. example from the PMK 192/PMK.010/2021
 From table 1 we can see that handrolled types are taxed lower. This trend continues in the future iterations of the PMK, in fact.
 
 
-variables in this dataset is constructed such that $V_{ij}$ be a variable where $i \in {l,q,t,r,p}$ and $j \in {skm1,skm2,spm1,spm2,skt1a,skt1b,skt2,skt3}$. l=HJE, q=production quantity, t=specific rate, r=total revenue, p=HTP. members of $j$ is just type/category but lowercase.
+variables in this dataset is constructed such that $V_{ij}$ be a variable where $i \in \{l,q,t,r,p\}$ and $j \in \{skm1,skm2,spm1,spm2,skt1a,skt1b,skt2,skt3\}$. l=HJE, q=production quantity, t=specific rate, r=total revenue, p=HTP. members of $j$ is just type/category but lowercase.
 
 We also have mo=month which is the time index for the dataset which spans from Jan 2014 to Dec 2023.
 
