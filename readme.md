@@ -20,7 +20,7 @@ THere are two types of prices in our dataset:
 
 Table 1. example from the PMK 192/PMK.010/2021
 
-| type/category | Quantity produced | HJE (1000 IDR) | tariff | AVE(%) |
+| type/category | Quantity produced | HJE (kIDR) | tariff (kIDR) | AVE(%) |
 | --- | ----- | ----- | ---- | --- |
 | SKM1 | > 3 billion cigarettes | 1.95 | .985 | 50.51 |
 | SKM2 | <= 3 billion cigarettes | 1.14 | .6 | 52.63 |
