@@ -18,6 +18,10 @@ gen rspm=rspm1+rspm2
 gen rskt=rskt1a+rskt1b+rskt2+rskt3
 gen rrr=rskm+rspm+rskt
 
+gen tskm=(tskm1*qskm1+tskm2*qskm2)/qskm
+gen tspm=(tspm1*qspm1+tspm2*qspm2)/qspm
+gen tskt=(tskt1a*qskt1a+tskt2*qskt2+tskt1b*qskt1b+tskt3*qskt3)/qskt
+
 gen lskm=(lskm1*qskm1+lskm2*qskm2)/qskm
 gen lspm=(lspm1*qspm1+lspm2*qspm2)/qspm
 gen lskt=(lskt1a*qskt1a+lskt2*qskt2+lskt1b*qskt1b+lskt3*qskt3)/qskt
@@ -39,9 +43,21 @@ gen plskt1b=pskt1b/lskt1b
 gen plskt2=pskt2/lskt2
 gen plskt3=pskt3/lskt3
 
+// ad-valorem equivalent + weighted average for 3 types
+gen askm1=tskm1/lskm1
+gen askm2=tskm2/lskm2
+gen aspm1=tspm1/lspm1
+gen aspm2=tskm2/lskm2
+gen askt1a=tskt1a/lskt1a
+gen askt1b=tskt1b/lskt1b
+gen askt2=tskt2/lskt2
+gen askt3=tskt3/lskt3
 
+gen askm=(askm1*qskm1+askm2*qskm2)/qskm
+gen aspm=(aspm1*qspm1+aspm2*qspm2)/qspm
+gen askt=(askt1a*qskt1a+askt2*qskt2+askt1b*qskt1b+askt3*qskt3)/qskt
 
-// graphing the demand pattern
+// graphing 7 stuff
 
 twoway (line qskm qspm qskt mo), legend(pos(6) col(4)) name(q4, replace) scheme(s1rcolor)
 twoway (line qskm1 qskm2 mo), legend(pos(6) col(4)) name(q1, replace) scheme(s1rcolor)
@@ -85,6 +101,25 @@ graph combine p1 p2 p3 p4, col(2) ysize(6) xsize(9) scheme(s1rcolor)
 
 graph export "pic/htp.png", as(png) name("Graph") replace
 
+twoway (line tskm tspm tskt mo), legend(pos(6) col(4)) name(t4, replace) scheme(s1rcolor)
+twoway (line tskm1 tskm2 mo), legend(pos(6) col(4)) name(t1, replace) scheme(s1rcolor)
+twoway (line tspm1 tspm2 mo), legend(pos(6) col(4)) name(t2, replace) scheme(s1rcolor)
+twoway (line tskt1a tskt1b tskt2 tskt3 mo), legend(pos(6) col(4)) name(t3,replace) scheme(s1rcolor)
+
+graph combine t1 t2 t3 t4, col(2) ysize(6) xsize(9) scheme(s1rcolor)
+
+graph export "pic/tariff.png", as(png) name("Graph") replace
+
+
+twoway (line askm aspm askt mo), legend(pos(6) col(4)) name(a4, replace) scheme(s1rcolor)
+twoway (line askm1 askm2 mo), legend(pos(6) col(4)) name(a1, replace) scheme(s1rcolor)
+twoway (line aspm1 aspm2 mo), legend(pos(6) col(4)) name(a2, replace) scheme(s1rcolor)
+twoway (line askt1a askt1b askt2 askt3 mo), legend(pos(6) col(4)) name(a3,replace) scheme(s1rcolor)
+
+graph combine a1 a2 a3 a4, col(2) ysize(6) xsize(9) scheme(s1rcolor)
+
+graph export "pic/ave.png", as(png) name("Graph") replace
+
 // graphing the HTP/HJE aka the market/legal price ratio (note that its has plenty missing spaces)
 // this graph shows how hard it is to try to estimate HTP based on HJE
 
@@ -97,7 +132,5 @@ graph combine pl1 pl2 pl3 pl4, col(2) ysize(6) xsize(9) scheme(s1rcolor)
 
 graph export "pic/htphje.png", as(png) name("Graph") replace
 
-twoway (area qskm mo,sort) \\\ 
-		(area qspm mo, sort) \\\
-		(area qskt mo,sort)
+
 

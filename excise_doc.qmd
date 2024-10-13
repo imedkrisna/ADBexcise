@@ -1,7 +1,7 @@
 ---
 title: "excise report"
 author: "Krisna Gupta"
-institute: "Prospera"
+institute: ""
 date: last-modified
 date-format: long
 bibliography: ref.bib
@@ -63,7 +63,44 @@ This paper relies solely on data sourced by DGCE. The data contains information 
 
 ### Traditional cigarette data
 
-The traditional cigarettes dataset contains information on annual production (in unit) and excise revenue for three kinds of traditional cigarettes, SKM, SKT and SPM. It also contain two types of regulated price data, HTP (retail price) and HJE (base price to calculate the excise liabilities), both quarterly. The data is available from 2018-2022, 2023 data was available for the first and second quarter only.
+According to Peraturan Menteri Keuangan (PMK) 192/PMK.010/2021 Tentang TARIF CUKAI HASILTEMBAKAU BERUPA SIGARET, CERUTU, ROKOK DAUN ATAU KLOBOT, DAN TEMBAKAU IRIS, There are three types (jenis) of cigarette in Indonesia:
+
+1. Sigaret Kretek Mesin (SKM) is a cloved cigarette which utilises machinery in most of its production. This accounts for 70.5% of total number of cigarette production in our dataset.
+2. Sigaret Putih Mesin (SPM) is an uncloved cigarette which utilises machinery in most of its production. This accounts for 4.68% of total number of cigarette production in our dataset.
+3. Sigaret Kretek Tangan (SKT) is a cloved cigarette which utilises no machinery at all in its production. This accounts for 24.8% of total number of cigarette production in our dataset. Included in this type is Sigaret Putih Tangan (SPT) which is the uncloved version of SKT, but we generally includes it here because they have the exact same tax structure.
+
+Actually there are other types of cigarettes but these three are the most important and we only have dataset on these three.
+
+For excise purpose, these three types are divided further into categories (golongan) based on how much a single firm produces each category. i.e., the tax structure tries to be progressive in that it put larger firm (e.g., producing so much annualy) on a higher tax brackett. Table 1 shows these categories and I put example from PMK 192/PMK.010/2021 (of course this table evolves as new PMK is produced)
+
+THere are two types of prices in our dataset:
+1. Harga Jual Eceran (HJE) is a price used by the government to set how much is the excise per cigarette.
+2. Harga Transaksi Pasar (HTP) is a price paid by the consumer. This price is crucial but we have very little data point for this (i.e., many missing obs because MOF does not conduct survey every month)
+
+Table 1. example from the PMK 192/PMK.010/2021
+
+| type/category | Quantity produced | HJE (kIDR) | tariff (kIDR) | AVE(%) |
+| --- | ----- | ----- | ---- | --- |
+| SKM1 | > 3 billion cigarettes | 1.95 | .985 | 50.51 |
+| SKM2 | <= 3 billion cigarettes | 1.14 | .6 | 52.63 |
+| SPM1 | > 3 billion cigarettes | 2.005 | 1.065 | 53.12 |
+| SPM2 | <= 3 billion cigarettes | 1.135 | .635 | 55.94 |
+| SKT1a | > 2 billion cigarettes | >1.635 | .44 | 26.91 |
+| SKT1b | > 2 billion cigarettes | >1.135 | .345 | 30.4 |
+| SKT2 | (0.5 < x < 2) billion cigarettes | >600 | .205 | 34.2 |
+| SKT3 | <= 0.5 billion cigarettes | >505 | .115 | 22.77 |
+
+From table 1 we can see that handrolled types are taxed lower. This trend continues in the future iterations of the PMK, in fact.
+
+
+variables in this dataset is constructed such that $V_{ij}$ be a variable where $i \in \{l,q,t,r,p\}$ and $j \in \{skm1,skm2,spm1,spm2,skt1a,skt1b,skt2,skt3\}$. l=HJE, q=production quantity, t=specific rate, r=total revenue, p=HTP. members of $j$ is just type/category but lowercase.
+
+We also have mo=month which is the time index for the dataset which spans from Jan 2014 to Dec 2023.
+
+Therefore, variable names in mydataset should look like this:
+
+> mo lskm1 lskm2 lspm1 lspm2 lskt1a lskt1b lskt2 lskt3 qskm1 qskm2 qspm1 qspm2 qskt1a qskt1b qskt2 qskt3 tskm1 tskm2 tspm1 tspm2 tskt1a tskt1b tskt2 tskt3 rskm1 rskm2 rspm1 rspm2 rskt1a rskt1b rskt2 rskt3 pskm1 pskm2 pspm1 pspm2 pskt1a pskt1b pskt2 pskt3
+
 
 ```{r}
 #| echo: false
@@ -82,23 +119,44 @@ theme_set(theme_classic())
 
 ```
 
-```{r}
-options("RStata.StataPath"="\"C:\\Program Files\\Stata17\\StataMP-64\"")
-options("RStata.StataVersion" = 17)
-
-## Reading data and write some logs
-dat<-stata('import excel "data\\excisedata.xlsx", sheet("Sheet1") firstrow',data.out=TRUE)
-
-stata('sureg (lqskm1 llskm1 llskm2 llspm1 llspm2 llskt1a llskt1b llskt2 llskt3) (lqskm2 llskm1 llskm2 llspm1 llspm2 llskt1a llskt1b llskt2 llskt3)',data.in = dat)
-
-stata('twoway (line qskm1 mo) (line qskm2 mo)',data.in = dat)
-```
-
-WHO suggests any tax rate below 70% is deemed too small to reduce smoking [@prasetyo618]
+WHO suggests any tax rate below 70% is deemed too small to reduce smoking [@prasetyo618].
 
 
 
-## Method
+### Visualization
+
+Data is visualized
+
+![aaa](pic/demand.png){#fig-q}
+
+this is @fig-q
+
+![bbb](pic/revenue.png){#fig-r}
+
+this is @fig-r
+
+![zzz](pic/hje.png){#fig-l}
+
+This is @fig-l
+
+![weqs](pic/htp.png){#fig-p}
+
+This is @fig-p
+
+![wewew](pic/htphje.png){#fig-lp}
+
+This is @fig-lp
+
+
+![auooo](pic/tariff.png){#fig-t}
+
+Meanwhile, @fig-t shows
+
+![eeaeaa](pic/ave.png){#fig-a}
+
+@fig-a shows
+
+## Elasticity estimation
 
 Here we describe our method in getting elasticities, tax-price pass-through and marginal revenue per marginal tax increase, given the data limitation.
 

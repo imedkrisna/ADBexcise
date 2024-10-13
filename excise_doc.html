@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Krisna Gupta">
-<meta name="dcterms.date" content="2024-10-07">
+<meta name="dcterms.date" content="2024-10-13">
 
 <title>excise report</title>
 <style>
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -135,27 +101,20 @@ window.Quarto = {
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Krisna Gupta </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Prospera
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Krisna Gupta </p>
+          </div>
+  </div>
+    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 7, 2024</p>
+      <p class="date">October 13, 2024</p>
     </div>
   </div>
   
@@ -239,79 +198,188 @@ Table&nbsp;1: literature summary
 <p>For objectives, this report bear similarity with <span class="citation" data-cites="RN">Hidayat and Thabrany (<a href="#ref-RN" role="doc-biblioref">2011</a>)</span> the most, albeit it is indeed important to see a tax-price pass-through a la <span class="citation" data-cites="prasetyo618">Prasetyo and Adrison (<a href="#ref-prasetyo618" role="doc-biblioref">2020</a>)</span>. We do have a production data of different types of cigarettes, but our data lack firm level richness as <span class="citation" data-cites="prasetyo618">Prasetyo and Adrison (<a href="#ref-prasetyo618" role="doc-biblioref">2020</a>)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Generally we do not look at the question posed by <span class="citation" data-cites="nach">Djutaharta et al. (<a href="#ref-nach" role="doc-biblioref">2021</a>)</span>, but This is still an important question to adhere by DGCE. The reason is because using excise as an instrument to reduce smoking may lead to a reduction of a household’s nutrient intake.</p>
 <p><span class="citation" data-cites="prasetyo618">Prasetyo and Adrison (<a href="#ref-prasetyo618" role="doc-biblioref">2020</a>)</span> offers various insight to the cigarettes market in Indonesia. The industry is highly oligopolistic and often offers low price of cigarettes to avoid paying progressive exicse. This leads to higher number of smokers<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Low potential revenue,thus may be outweighed by the higher cost of treatment of tobacco-related diseases.</p>
 <p>On the last note, none of those are looking at electric cigarettes.</p>
+<p>On Method, we generally use <span class="citation" data-cites="zellner">Zellner (<a href="#ref-zellner" role="doc-biblioref">1963</a>)</span> which developed Seemingly Unrelated Regression (SUR) which is widely used for cross-price elasticity calculation.</p>
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
 <p>This paper relies solely on data sourced by DGCE. The data contains information on both traditional and e-cigarettes, albeit on different details. We will first discuss about the traditional cigarettes and then proceed to e-cigarettes.</p>
 <section id="traditional-cigarette-data" class="level3">
 <h3 class="anchored" data-anchor-id="traditional-cigarette-data">Traditional cigarette data</h3>
-<p>The traditional cigarettes dataset contains information on annual production (in unit) and excise revenue for three kinds of traditional cigarettes, SKM, SKT and SPM. It also contain two types of regulated price data, HTP (retail price) and HJE (base price to calculate the excise liabilities), both quarterly. The data is available from 2018-2022, 2023 data was available for the first and second quarter only.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">"RStata.StataPath"</span><span class="ot">=</span><span class="st">"</span><span class="sc">\"</span><span class="st">C:</span><span class="sc">\\</span><span class="st">Program Files</span><span class="sc">\\</span><span class="st">Stata17</span><span class="sc">\\</span><span class="st">StataMP-64</span><span class="sc">\"</span><span class="st">"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">"RStata.StataVersion"</span> <span class="ot">=</span> <span class="dv">17</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading data and write some logs</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dat<span class="ot">&lt;-</span><span class="fu">stata</span>(<span class="st">'import excel "data</span><span class="sc">\\</span><span class="st">excisedata.xlsx", sheet("Sheet1") firstrow'</span>,<span class="at">data.out=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>. import excel "data\excisedata.xlsx", sheet("Sheet1") firstrow
-(81 vars, 120 obs)</code></pre>
+<p>According to Peraturan Menteri Keuangan (PMK) 192/PMK.010/2021 Tentang TARIF CUKAI HASILTEMBAKAU BERUPA SIGARET, CERUTU, ROKOK DAUN ATAU KLOBOT, DAN TEMBAKAU IRIS, There are three types (jenis) of cigarette in Indonesia:</p>
+<ol type="1">
+<li>Sigaret Kretek Mesin (SKM) is a cloved cigarette which utilises machinery in most of its production. This accounts for 70.5% of total number of cigarette production in our dataset.</li>
+<li>Sigaret Putih Mesin (SPM) is an uncloved cigarette which utilises machinery in most of its production. This accounts for 4.68% of total number of cigarette production in our dataset.</li>
+<li>Sigaret Kretek Tangan (SKT) is a cloved cigarette which utilises no machinery at all in its production. This accounts for 24.8% of total number of cigarette production in our dataset. Included in this type is Sigaret Putih Tangan (SPT) which is the uncloved version of SKT, but we generally includes it here because they have the exact same tax structure.</li>
+</ol>
+<p>Actually there are other types of cigarettes but these three are the most important and we only have dataset on these three.</p>
+<p>For excise purpose, these three types are divided further into categories (golongan) based on how much a single firm produces each category. i.e., the tax structure tries to be progressive in that it put larger firm (e.g., producing so much annualy) on a higher tax brackett. Table 1 shows these categories and I put example from PMK 192/PMK.010/2021 (of course this table evolves as new PMK is produced)</p>
+<p>THere are two types of prices in our dataset: 1. Harga Jual Eceran (HJE) is a price used by the government to set how much is the excise per cigarette. 2. Harga Transaksi Pasar (HTP) is a price paid by the consumer. This price is crucial but we have very little data point for this (i.e., many missing obs because MOF does not conduct survey every month)</p>
+<p>Table 1. example from the PMK 192/PMK.010/2021</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 20%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>type/category</th>
+<th>Quantity produced</th>
+<th>HJE (kIDR)</th>
+<th>tariff (kIDR)</th>
+<th>AVE(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SKM1</td>
+<td>&gt; 3 billion cigarettes</td>
+<td>1.95</td>
+<td>.985</td>
+<td>50.51</td>
+</tr>
+<tr class="even">
+<td>SKM2</td>
+<td>&lt;= 3 billion cigarettes</td>
+<td>1.14</td>
+<td>.6</td>
+<td>52.63</td>
+</tr>
+<tr class="odd">
+<td>SPM1</td>
+<td>&gt; 3 billion cigarettes</td>
+<td>2.005</td>
+<td>1.065</td>
+<td>53.12</td>
+</tr>
+<tr class="even">
+<td>SPM2</td>
+<td>&lt;= 3 billion cigarettes</td>
+<td>1.135</td>
+<td>.635</td>
+<td>55.94</td>
+</tr>
+<tr class="odd">
+<td>SKT1a</td>
+<td>&gt; 2 billion cigarettes</td>
+<td>&gt;1.635</td>
+<td>.44</td>
+<td>26.91</td>
+</tr>
+<tr class="even">
+<td>SKT1b</td>
+<td>&gt; 2 billion cigarettes</td>
+<td>&gt;1.135</td>
+<td>.345</td>
+<td>30.4</td>
+</tr>
+<tr class="odd">
+<td>SKT2</td>
+<td>(0.5 &lt; x &lt; 2) billion cigarettes</td>
+<td>&gt;600</td>
+<td>.205</td>
+<td>34.2</td>
+</tr>
+<tr class="even">
+<td>SKT3</td>
+<td>&lt;= 0.5 billion cigarettes</td>
+<td>&gt;505</td>
+<td>.115</td>
+<td>22.77</td>
+</tr>
+</tbody>
+</table>
+<p>From table 1 we can see that handrolled types are taxed lower. This trend continues in the future iterations of the PMK, in fact.</p>
+<p>variables in this dataset is constructed such that <span class="math inline">\(V_{ij}\)</span> be a variable where <span class="math inline">\(i \in \{l,q,t,r,p\}\)</span> and <span class="math inline">\(j \in \{skm1,skm2,spm1,spm2,skt1a,skt1b,skt2,skt3\}\)</span>. l=HJE, q=production quantity, t=specific rate, r=total revenue, p=HTP. members of <span class="math inline">\(j\)</span> is just type/category but lowercase.</p>
+<p>We also have mo=month which is the time index for the dataset which spans from Jan 2014 to Dec 2023.</p>
+<p>Therefore, variable names in mydataset should look like this:</p>
+<blockquote class="blockquote">
+<p>mo lskm1 lskm2 lspm1 lspm2 lskt1a lskt1b lskt2 lskt3 qskm1 qskm2 qspm1 qspm2 qskt1a qskt1b qskt2 qskt3 tskm1 tskm2 tspm1 tspm2 tskt1a tskt1b tskt2 tskt3 rskm1 rskm2 rspm1 rspm2 rskt1a rskt1b rskt2 rskt3 pskm1 pskm2 pspm1 pspm2 pskt1a pskt1b pskt2 pskt3</p>
+</blockquote>
+<p>WHO suggests any tax rate below 70% is deemed too small to reduce smoking <span class="citation" data-cites="prasetyo618">(<a href="#ref-prasetyo618" role="doc-biblioref">Prasetyo and Adrison 2020</a>)</span>.</p>
+</section>
+<section id="visualization" class="level3">
+<h3 class="anchored" data-anchor-id="visualization">Visualization</h3>
+<p>Data is visualized</p>
+<div id="fig-q" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-q-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/demand.png" class="img-fluid figure-img">
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stata</span>(<span class="st">'sureg (lqskm1 llskm1 llskm2 llspm1 llspm2 llskt1a llskt1b llskt2 llskt3) (lqskm2 llskm1 llskm2 llspm1 llspm2 llskt1a llskt1b llskt2 llskt3)'</span>,<span class="at">data.in =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>. sureg (lqskm1 llskm1 llskm2 llspm1 llspm2 llskt1a llskt1b llskt2 llskt3) (lqs
-&gt; km2 llskm1 llskm2 llspm1 llspm2 llskt1a llskt1b llskt2 llskt3)
-note: llskt3 omitted because of collinearity.
-note: llskt3 omitted because of collinearity.
-
-Seemingly unrelated regression
-------------------------------------------------------------------------------
-Equation             Obs   Params         RMSE  "R-squared"      chi2   P&gt;chi2
-------------------------------------------------------------------------------
-lqskm1               120        7     .3388905      0.2657      43.42   0.0000
-lqskm2               120        7     .2869425      0.4663     104.84   0.0000
-------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------
-             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
--------------+----------------------------------------------------------------
-lqskm1       |
-      llskm1 |   8.624737   6.287575     1.37   0.170    -3.698684    20.94816
-      llskm2 |  -.5359959   2.383796    -0.22   0.822    -5.208149    4.136158
-      llspm1 |  -7.070685   5.349794    -1.32   0.186    -17.55609    3.414717
-      llspm2 |   .3073703   1.353226     0.23   0.820    -2.344904    2.959645
-     llskt1a |   -4.83538   5.517332    -0.88   0.381    -15.64915    5.978391
-     llskt1b |   3.744897   5.491655     0.68   0.495    -7.018549    14.50834
-      llskt2 |  -1.338304   .9533111    -1.40   0.160    -3.206759    .5301515
-      llskt3 |          0  (omitted)
-       _cons |   31.40495   3.393581     9.25   0.000     24.75366    38.05625
--------------+----------------------------------------------------------------
-lqskm2       |
-      llskm1 |  -1.528235   5.323763    -0.29   0.774    -11.96262    8.906148
-      llskm2 |    2.98516   2.018387     1.48   0.139    -.9708063    6.941126
-      llspm1 |   1.080678   4.529732     0.24   0.811    -7.797434    9.958789
-      llspm2 |  -1.521846   1.145792    -1.33   0.184    -3.767557     .723866
-     llskt1a |   1.622575   4.671589     0.35   0.728     -7.53357    10.77872
-     llskt1b |  -1.562185   4.649848    -0.34   0.737    -10.67572    7.551349
-      llskt2 |   .2147224   .8071795     0.27   0.790     -1.36732    1.796765
-      llskt3 |          0  (omitted)
-       _cons |   13.04086   2.873385     4.54   0.000     7.409127    18.67259
-------------------------------------------------------------------------------</code></pre>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-q-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: aaa
+</figcaption>
+</figure>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stata</span>(<span class="st">'twoway (line qskm1 mo) (line qskm2 mo)'</span>,<span class="at">data.in =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>. twoway (line qskm1 mo) (line qskm2 mo)</code></pre>
+<p>this is <a href="#fig-q" class="quarto-xref">Figure&nbsp;1</a></p>
+<div id="fig-r" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/revenue.png" class="img-fluid figure-img">
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: bbb
+</figcaption>
+</figure>
 </div>
-<p>WHO suggests any tax rate below 70% is deemed too small to reduce smoking <span class="citation" data-cites="prasetyo618">(<a href="#ref-prasetyo618" role="doc-biblioref">Prasetyo and Adrison 2020</a>)</span></p>
+<p>this is <a href="#fig-r" class="quarto-xref">Figure&nbsp;2</a></p>
+<div id="fig-l" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-l-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/hje.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-l-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: zzz
+</figcaption>
+</figure>
+</div>
+<p>This is <a href="#fig-l" class="quarto-xref">Figure&nbsp;3</a></p>
+<div id="fig-p" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/htp.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: weqs
+</figcaption>
+</figure>
+</div>
+<p>This is <a href="#fig-p" class="quarto-xref">Figure&nbsp;4</a></p>
+<div id="fig-lp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/htphje.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: wewew
+</figcaption>
+</figure>
+</div>
+<p>This is <a href="#fig-lp" class="quarto-xref">Figure&nbsp;5</a></p>
+<div id="fig-t" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-t-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/tariff.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: auooo
+</figcaption>
+</figure>
+</div>
+<p>Meanwhile, <a href="#fig-t" class="quarto-xref">Figure&nbsp;6</a> shows</p>
+<div id="fig-a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/ave.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: eeaeaa
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-a" class="quarto-xref">Figure&nbsp;7</a> shows</p>
 </section>
 </section>
 <section id="method" class="level2">
@@ -357,6 +425,9 @@ Hidayat, Budi, and Hasbullah Thabrany. 2011. <span>“Are Smokers Rational Addic
 </div>
 <div id="ref-prasetyo618" class="csl-entry" role="listitem">
 Prasetyo, Bagus Wahyu, and Vid Adrison. 2020. <span>“Cigarette Prices in a Complex Cigarette Tax System: Empirical Evidence from Indonesia.”</span> <em>Tobacco Control</em> 29 (6): 618–23. <a href="https://doi.org/10.1136/tobaccocontrol-2018-054872">https://doi.org/10.1136/tobaccocontrol-2018-054872</a>.
+</div>
+<div id="ref-zellner" class="csl-entry" role="listitem">
+Zellner, Arnold. 1963. <span>“Estimators for Seemingly Unrelated Regression Equations: Some Exact Finite Sample Results.”</span> Journal Article. <em>Journal of the American Statistical Association</em> 58 (304): 977–92. <a href="https://doi.org/10.2307/2283326">https://doi.org/10.2307/2283326</a>.
 </div>
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
