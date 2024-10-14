@@ -37,23 +37,23 @@ We rely on three papers for our desk investigation which is summarized in @tbl-1
 
 @prasetyo618 utilise transactional data on the firm level, 2005-2017, with total 32,711 observations (around 2,500 firms per year). They get the data from DGCE. They look at the tax-price pass through, which is the impact of changes in tax to the firms' pricing strategy. They also examine the pass-through effect on three types of traditional cigarettes, namely SKT, SKM and SPM. They find that an increase of 1% of tax rate leads to an increase of prices by around 0.15, 0.36 and 0.77 for SKT, SKM and SPM respectively.
 
-| paper  | finding  | data | obs year | N |
-|--------|--------|------|------|-----|
-| @RN  |  elasticity (-0.38 to -0.57)  | IFLS | 1993,1997,2000 | 1783 |
-| @nach   | budget share   | Susenas, PODES, RISKESDAS  | 2014 | 285,400 |
-| @prasetyo618 | tax-price passtrough   | firm transactions from DGCE | 2005-2017 | 32,711 |
-
+| paper | finding | data | obs year | N |
+|---------------|---------------|---------------|---------------|---------------|
+| @RN | elasticity (-0.38 to -0.57) | IFLS | 1993,1997,2000 | 1783 |
+| @nach | budget share | Susenas, PODES, RISKESDAS | 2014 | 285,400 |
+| @prasetyo618 | tax-price passtrough | firm transactions from DGCE | 2005-2017 | 32,711 |
 
 : literature summary {#tbl-1 .striped .hover}
 
-For objectives, this report bear similarity with @RN the most, albeit it is indeed important to see a tax-price pass-through a la @prasetyo618. We do have a production data of different types of cigarettes, but our data lack firm level richness as @prasetyo618[^2]. Generally we do not look at the question posed by @nach, but This is still an important question to adhere by DGCE. The reason is because using excise as an instrument to reduce smoking may lead to a reduction of a household's nutrient intake.
+For objectives, this report bear similarity with @RN the most, albeit it is indeed important to see a tax-price pass-through a la @prasetyo618. We do have a production data of different types of cigarettes, but our data lack firm level richness as @prasetyo618[^1]. Generally we do not look at the question posed by @nach, but This is still an important question to adhere by DGCE. The reason is because using excise as an instrument to reduce smoking may lead to a reduction of a household's nutrient intake.
 
-@prasetyo618 offers various insight to the cigarettes market in Indonesia. The industry is highly oligopolistic and often offers low price of cigarettes to avoid paying progressive exicse. This leads to higher number of smokers[^3]. Low potential revenue,thus may be outweighed by the higher cost of treatment of tobacco-related diseases.
+[^1]: interestingly, they also sourced the data from DGCE.
+
+@prasetyo618 offers various insight to the cigarettes market in Indonesia. The industry is highly oligopolistic and often offers low price of cigarettes to avoid paying progressive exicse. This leads to higher number of smokers[^2]. Low potential revenue,thus may be outweighed by the higher cost of treatment of tobacco-related diseases.
+
+[^2]: adult male smokers increase in share from 60.6% in 2000 to 76.1%
 
 On the last note, none of those are looking at electric cigarettes.
-
-[^2]: interestingly, they also sourced the data from DGCE.
-[^3]: adult male smokers increase in share from 60.6% in 2000 to 76.1%
 
 On Method, we generally use @zellner which developed Seemingly Unrelated Regression (SUR) which is widely used for cross-price elasticity calculation.
 
@@ -65,33 +65,30 @@ This paper relies solely on data sourced by DGCE. The data contains information 
 
 According to Peraturan Menteri Keuangan (PMK) 192/PMK.010/2021 Tentang TARIF CUKAI HASILTEMBAKAU BERUPA SIGARET, CERUTU, ROKOK DAUN ATAU KLOBOT, DAN TEMBAKAU IRIS, There are three types (jenis) of cigarette in Indonesia:
 
-1. Sigaret Kretek Mesin (SKM) is a cloved cigarette which utilises machinery in most of its production. This accounts for 70.5% of total number of cigarette production in our dataset.
-2. Sigaret Putih Mesin (SPM) is an uncloved cigarette which utilises machinery in most of its production. This accounts for 4.68% of total number of cigarette production in our dataset.
-3. Sigaret Kretek Tangan (SKT) is a cloved cigarette which utilises no machinery at all in its production. This accounts for 24.8% of total number of cigarette production in our dataset. Included in this type is Sigaret Putih Tangan (SPT) which is the uncloved version of SKT, but we generally includes it here because they have the exact same tax structure.
+1.  Sigaret Kretek Mesin (SKM) is a cloved cigarette which utilises machinery in most of its production. This accounts for 70.5% of total number of cigarette production in our dataset.
+2.  Sigaret Putih Mesin (SPM) is an uncloved cigarette which utilises machinery in most of its production. This accounts for 4.68% of total number of cigarette production in our dataset.
+3.  Sigaret Kretek Tangan (SKT) is a cloved cigarette which utilises no machinery at all in its production. This accounts for 24.8% of total number of cigarette production in our dataset. Included in this type is Sigaret Putih Tangan (SPT) which is the uncloved version of SKT, but we generally includes it here because they have the exact same tax structure.
 
 Actually there are other types of cigarettes but these three are the most important and we only have dataset on these three.
 
 For excise purpose, these three types are divided further into categories (golongan) based on how much a single firm produces each category. i.e., the tax structure tries to be progressive in that it put larger firm (e.g., producing so much annualy) on a higher tax brackett. Table 1 shows these categories and I put example from PMK 192/PMK.010/2021 (of course this table evolves as new PMK is produced)
 
-THere are two types of prices in our dataset:
-1. Harga Jual Eceran (HJE) is a price used by the government to set how much is the excise per cigarette.
-2. Harga Transaksi Pasar (HTP) is a price paid by the consumer. This price is crucial but we have very little data point for this (i.e., many missing obs because MOF does not conduct survey every month)
+THere are two types of prices in our dataset: 1. Harga Jual Eceran (HJE) is a price used by the government to set how much is the excise per cigarette. 2. Harga Transaksi Pasar (HTP) is a price paid by the consumer. This price is crucial but we have very little data point for this (i.e., many missing obs because MOF does not conduct survey every month)
 
 Table 1. example from the PMK 192/PMK.010/2021
 
 | type/category | Quantity produced | HJE (kIDR) | tariff (kIDR) | AVE(%) |
-| --- | ----- | ----- | ---- | --- |
-| SKM1 | > 3 billion cigarettes | 1.95 | .985 | 50.51 |
-| SKM2 | <= 3 billion cigarettes | 1.14 | .6 | 52.63 |
-| SPM1 | > 3 billion cigarettes | 2.005 | 1.065 | 53.12 |
-| SPM2 | <= 3 billion cigarettes | 1.135 | .635 | 55.94 |
-| SKT1a | > 2 billion cigarettes | >1.635 | .44 | 26.91 |
-| SKT1b | > 2 billion cigarettes | >1.135 | .345 | 30.4 |
-| SKT2 | (0.5 < x < 2) billion cigarettes | >600 | .205 | 34.2 |
-| SKT3 | <= 0.5 billion cigarettes | >505 | .115 | 22.77 |
+|---------------|---------------|---------------|---------------|---------------|
+| SKM1 | \> 3 billion cigarettes | 1.95 | .985 | 50.51 |
+| SKM2 | \<= 3 billion cigarettes | 1.14 | .6 | 52.63 |
+| SPM1 | \> 3 billion cigarettes | 2.005 | 1.065 | 53.12 |
+| SPM2 | \<= 3 billion cigarettes | 1.135 | .635 | 55.94 |
+| SKT1a | \> 2 billion cigarettes | \>1.635 | .44 | 26.91 |
+| SKT1b | \> 2 billion cigarettes | \>1.135 | .345 | 30.4 |
+| SKT2 | (0.5 \< x \< 2) billion cigarettes | \>600 | .205 | 34.2 |
+| SKT3 | \<= 0.5 billion cigarettes | \>505 | .115 | 22.77 |
 
 From table 1 we can see that handrolled types are taxed lower. This trend continues in the future iterations of the PMK, in fact.
-
 
 variables in this dataset is constructed such that $V_{ij}$ be a variable where $i \in \{l,q,t,r,p\}$ and $j \in \{skm1,skm2,spm1,spm2,skt1a,skt1b,skt2,skt3\}$. l=HJE, q=production quantity, t=specific rate, r=total revenue, p=HTP. members of $j$ is just type/category but lowercase.
 
@@ -100,7 +97,6 @@ We also have mo=month which is the time index for the dataset which spans from J
 Therefore, variable names in mydataset should look like this:
 
 > mo lskm1 lskm2 lspm1 lspm2 lskt1a lskt1b lskt2 lskt3 qskm1 qskm2 qspm1 qspm2 qskt1a qskt1b qskt2 qskt3 tskm1 tskm2 tspm1 tspm2 tskt1a tskt1b tskt2 tskt3 rskm1 rskm2 rspm1 rspm2 rskt1a rskt1b rskt2 rskt3 pskm1 pskm2 pspm1 pspm2 pskt1a pskt1b pskt2 pskt3
-
 
 ```{r}
 #| echo: false
@@ -120,8 +116,6 @@ theme_set(theme_classic())
 ```
 
 WHO suggests any tax rate below 70% is deemed too small to reduce smoking [@prasetyo618].
-
-
 
 ### Visualization
 
@@ -146,7 +140,6 @@ This is @fig-p
 ![wewew](pic/htphje.png){#fig-lp}
 
 This is @fig-lp
-
 
 ![auooo](pic/tariff.png){#fig-t}
 
@@ -190,8 +183,4 @@ $$
 
 We use data that are made available by DGCE for us. Data contains production, revenue, base price (HJE) for tax purposes and retail price (HTE) for consumers for various types of traditional and electric cigarettes. Unfortunately, the availability of those data differs quite tremendously. Some are collected monthly, some others are quarterly and annually. Common denominator suggests us to conduct the analysis annually.
 
-
-
 ## References {.unnumbered}
-
-
