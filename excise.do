@@ -112,7 +112,7 @@ gen ltskt1b=log(tskt1b)
 gen ltskt2=log(tskt2)
 gen ltskt3=log(tskt3)
 
-gen lgni=log(gni)
+gen lgni=log(gni/pop)
 
 // globals
 
