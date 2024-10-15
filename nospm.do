@@ -126,13 +126,13 @@ gen lgni=log(gni/pop)
 
 // globals
 
-global hje llskm1 llskm2 llspm1 llspm2 llskt1a llskt1b llskt2 llskt3 lgni 
-global htp lpskm1 lpskm2 lpspm1 lpspm2 lpskt1a lpskt1b lpskt2 lpskt3 lgni 
-global spec ltskm1 ltskm2 ltspm1 ltspm2 ltskt1a ltskt1b ltskt2 ltskt3 lgni
-global ave askm1 askm2 aspm1 aspm2 askt1a askt1b askt2 askt3 lgni
-global qua lqskm1 lqskm2 lqspm1 lqspm2 lqskt1a lqskt1b lqskt2 lqskt3 lgni
-global rev lrskm1 lrskm2 lrspm1 lrspm2 lrskt1a lrskt1b lrskt2 lrskt3 lgni
-global htphje lplskm1 lplskm2 lplspm1 lplspm2 lplskt1a lplskt1b lplskt2 lplskt3 lgni
+global hje llskm1 llskm2 llskt1a llskt1b llskt2 llskt3 lgni 
+global htp lpskm1 lpskm2 lpskt1a lpskt1b lpskt2 lpskt3 lgni 
+global spec ltskm1 ltskm2 ltskt1a ltskt1b ltskt2 ltskt3 lgni
+global ave askm1 askm2 askt1a askt1b askt2 askt3 lgni
+global qua lqskm1 lqskm2 lqskt1a lqskt1b lqskt2 lqskt3 lgni
+global rev lrskm1 lrskm2 lrskt1a lrskt1b lrskt2 lrskt3 lgni
+global htphje lplskm1 lplskm2 lplskt1a lplskt1b lplskt2 lplskt3 lgni
 
 
 // graphing 7 stuff
@@ -201,10 +201,10 @@ graph export "pic/ave.png", as(png) name("Graph") replace
 // graphing the HTP/HJE aka the market/legal price ratio (note that its has plenty missing spaces)
 // this graph shows how hard it is to try to estimate HTP based on HJE
 
-twoway (line plskm plspm plskt mo) (scatter plskm plspm plskt mo), legend(pos(6) col(4)) name(pl4, replace) scheme(s1rcolor)
-twoway (line plskm1 plskm2 mo) (scatter plskm1 plskm2 mo), legend(pos(6) col(4)) name(pl1, replace) scheme(s1rcolor)
-twoway (line plspm1 plspm2 mo) (scatter plspm1 plspm2 mo), legend(pos(6) col(4)) name(pl2, replace) scheme(s1rcolor)
-twoway (line plskt1a plskt1b plskt2 plskt3 mo) (scatter plskt1a plskt1b plskt2 plskt3 mo), legend(pos(6) col(4)) name(pl3,replace) scheme(s1rcolor)
+twoway (line plskm plspm plskt mo), legend(pos(6) col(4)) name(pl4, replace) scheme(s1rcolor)
+twoway (line plskm1 plskm2 mo), legend(pos(6) col(4)) name(pl1, replace) scheme(s1rcolor)
+twoway (line plspm1 plspm2 mo), legend(pos(6) col(4)) name(pl2, replace) scheme(s1rcolor)
+twoway (line plskt1a plskt1b plskt2 plskt3 mo), legend(pos(6) col(4)) name(pl3,replace) scheme(s1rcolor)
 
 graph combine pl1 pl2 pl3 pl4, col(2) ysize(6) xsize(9) scheme(s1rcolor)
 
@@ -215,7 +215,7 @@ graph export "pic/htphje.png", as(png) name("Graph") replace
 
 tsset mo
 
-sureg (lqskm1 $hje) (lqskm2 $hje) (lqspm1 $hje) (lqspm2 $hje) (lqskt1a $hje) (lqskt1b $hje) (lqskt2 $hje) (lqskt3 $hje)
+sureg (lqskm1 $hje) (lqskm2 $hje) (lqskt1a $hje) (lqskt1b $hje) (lqskt2 $hje) (lqskt3 $hje)
 outreg2 using "reg/qhje", word excel replace
 
 /*
@@ -224,12 +224,12 @@ sureg (lqskm1 $htp) (lqskm2 $htp) (lqspm1 $htp) (lqspm2 $htp) (lqskt1a $htp) (lq
 outreg2 using "reg/qhtp", word excel replace
 */
 
-sureg (lqskm1 $ave) (lqskm2 $ave) (lqspm1 $ave) (lqspm2 $ave) (lqskt1a $ave) (lqskt1b $ave) (lqskt2 $ave) (lqskt3 $ave)
+sureg (lqskm1 $ave) (lqskm2 $ave) (lqskt1a $ave) (lqskt1b $ave) (lqskt2 $ave) (lqskt3 $ave)
 outreg2 using "reg/qave", word excel replace
 
 /// revenue elasticity
 
-sureg (lrskm1 $hje) (lrskm2 $hje) (lrspm1 $hje) (lrspm2 $hje) (lrskt1a $hje) (lrskt1b $hje) (lrskt2 $hje) (lrskt3 $hje)
+sureg (lrskm1 $hje) (lrskm2 $hje) (lrskt1a $hje) (lrskt1b $hje) (lrskt2 $hje) (lrskt3 $hje)
 outreg2 using "reg/rhje", word excel replace
 
 /*
@@ -238,7 +238,7 @@ sureg (lrskm1 $htp) (lrskm2 $htp) (lrspm1 $htp) (lrspm2 $htp) (lrskt1a $htp) (lr
 outreg2 using "reg/rhtp", word excel replace 
 */
 
-sureg (lrskm1 $ave) (lrskm2 $ave) (lrspm1 $ave) (lrspm2 $ave) (lrskt1a $ave) (lrskt1b $ave) (lrskt2 $ave) (lrskt3 $ave)
+sureg (lrskm1 $ave) (lrskm2 $ave) (lrskt1a $ave) (lrskt1b $ave) (lrskt2 $ave) (lrskt3 $ave)
 outreg2 using "reg/rave", word excel replace
 
 /// price passthrough
