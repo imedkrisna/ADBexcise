@@ -112,6 +112,9 @@ gen ltskt1b=log(tskt1b)
 gen ltskt2=log(tskt2)
 gen ltskt3=log(tskt3)
 
+// GNI is in quarter, while population is annual
+// I recorded it at the end of each quarter (i.e., mar, jun, sep, dec) and end of year (dec)
+// Monthly number is imputed by taking a linear difference / trend
 gen lgni=log(gni/pop)
 
 // globals
@@ -160,9 +163,9 @@ graph export "pic/hje.png", as(png) name("Graph") replace
 
 // graphing the HTP aka the market price (note that its has plenty missing spaces)
 
-twoway (line pskm pspm pskt mo), legend(pos(6) col(4)) name(p4, replace) scheme(s1rcolor)
-twoway (line pskm1 pskm2 mo), legend(pos(6) col(4)) name(p1, replace) scheme(s1rcolor)
-twoway (line pspm1 pspm2 mo), legend(pos(6) col(4)) name(p2, replace) scheme(s1rcolor)
+twoway (line pskm pspm pskt mo) (scatter pskm pspm pskt mo), legend(pos(6) col(4)) name(p4, replace) scheme(s1rcolor)
+twoway (line pskm1 pskm2 mo) (scatter pskm1 pskm2 mo), legend(pos(6) col(4)) name(p1, replace) scheme(s1rcolor)
+twoway (line pspm1 pspm2 mo) (scatter pspm1 pspm2 mo), legend(pos(6) col(4)) name(p2, replace) scheme(s1rcolor)
 twoway (line pskt1a pskt1b pskt2 pskt3 mo), legend(pos(6) col(4)) name(p3,replace) scheme(s1rcolor)
 
 graph combine p1 p2 p3 p4, col(2) ysize(6) xsize(9) scheme(s1rcolor)
