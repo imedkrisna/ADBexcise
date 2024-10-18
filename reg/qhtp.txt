@@ -1,0 +1,18 @@
+	(1)	(2)
+VARIABLES	lqskm1	lqskm2
+		
+lpskm1	-0.607	1.714
+	(2.292)	(1.865)
+lpskm2	1.807	2.781
+	(2.499)	(2.033)
+lpskt	-1.666	-2.474
+	(2.291)	(1.864)
+lgni	-1.321	-3.140
+	(2.381)	(1.938)
+Constant	48.20*	58.49***
+	(27.35)	(22.25)
+		
+Observations	11	11
+R-squared	0.315	0.590
+Standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		
