@@ -227,6 +227,9 @@ outreg2 using "reg/qhtp", word excel replace
 sureg (lqskm1 $ave) (lqskm2 $ave) (lqspm1 $ave) (lqspm2 $ave) (lqskt1a $ave) (lqskt1b $ave) (lqskt2 $ave) (lqskt3 $ave)
 outreg2 using "reg/qave", word excel replace
 
+sureg (lqskm1 lpskm1 lpskm2 lpskt lgni) (lqskm2 lpskm1 lpskm2 lpskt lgni)
+outreg2 using "reg/qhtp", word excel replace
+
 /// revenue elasticity
 
 sureg (lrskm1 $hje) (lrskm2 $hje) (lrspm1 $hje) (lrspm2 $hje) (lrskt1a $hje) (lrskt1b $hje) (lrskt2 $hje) (lrskt3 $hje)
