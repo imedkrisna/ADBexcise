@@ -119,59 +119,67 @@ WHO suggests any tax rate below 70% is deemed too small to reduce smoking [@pras
 
 ### Visualization
 
-Data is visualized
+Data is visualized. I arrange the visualization using a typical pattern. Each variable is visualized 4 times. The first three are each category in each three types (SKM, SKT, and SPM). 
 
-![aaa](pic/demand.png){#fig-q}
+For example, top-left panel is SKM1 and SKM2, top right is SPM1 and SPM2, and the bottom-left panel is SKT1a, SKT1b, SKT2 and SKT3. The bottom-right shows either the aggregate or the weighted average of SKM, SPM, and SKT.
 
-this is @fig-q
+![Quantity demand for excise ribbon](pic/demand.png){#fig-q}
 
-![bbb](pic/revenue.png){#fig-r}
+@fig-q represents the quantity demand of excise ribbon, which is measured by stick. We can see some trend. The SKM1 seems to be gradually reduced, with a clear downtrend starting on mid-2018. Meanwhile, SKM2 gradually rises, suggesting a possible bunching, where large firms distribute its production to many smaller firms to get SKM2 tariff brackett.
 
-this is @fig-r
+Similar trend can be seen in SPM, which shows clear convergence where the more expensive one dwindles down. On aggregate, we can see clear reduction in this type. Lastly, we can see clear winner from SKT, which is the SKT3. Again, cutoff point is around mid-2018.
 
-![zzz](pic/hje.png){#fig-l}
+![Tariff Revenue](pic/revenue.png){#fig-r}
 
-This is @fig-l
+We can infer similar similar situation from @fig-r, which shows revenue generated from such excise. We do still see upward trend amid increasing tariff overall. However, the stagnation from SPM isn't matched by the increase in SKT's revenue.
 
-![weqs](pic/htp.png){#fig-p}
+![Legal price per stick (HJE)](pic/hje.png){#fig-l}
 
-This is @fig-p
+@fig-l shows the legal price, HJE. This is the price set by the customs as a tariff reference. The HJE changes only few times in a year, which explains the various flat line. 
 
-![wewew](pic/htphje.png){#fig-lp}
+We see a noticable reduction of HJE for SKT2 and SKT3 in June 2018. The same cannot be said for the rest of the cigarette types. In June 2020, we see another noticable spike especially in the machine cigarettes. We don't see the same thing in SKT, however.
 
-This is @fig-lp
+![Market price per stick](pic/htp.png){#fig-p}
 
-![auooo](pic/tariff.png){#fig-t}
+@fig-p shows the market price surveyed by the customs. Here we have many missing observation (months without a dot) because the customs do not conduct monthly survey. We do see a noticable divergence of price in January 2020 between machine-made and hand-made cigarettes (bottom-right).
 
-Meanwhile, @fig-t shows
+![Ratio between market price and legal price](pic/htphje.png){#fig-lp}
 
-![eeaeaa](pic/ave.png){#fig-a}
+@fig-lp shows a ratio between market price and legal price. A high HTP/HJE ratio may suggests a degree of market power or high demand. More importantly, if the HTP/HJE ratio generally reasonably flat, then we can use HJE (which observation completes) as a proxy for HTP (which contain missing observations. 
 
-@fig-a shows
+Unfortunately, this ratio varies considerably for all observations.Generally, HTP/HJE ratio is lower for machine-made cigarettes compared to hand-made ones, even reaching below 1 after January 2020. This ratio is driven mainly by the two lowest brackett, SKT2 and SKT3 (lower-left).
+
+![Excise tariff per stick](pic/tariff.png){#fig-t}
+
+Meanwhile, @fig-t shows tariff charged per stick. We can see a pattern resembling the HJE since the tariff is enacted based on HJE. While some SKT got HJE reduction, tariff remains increasing in trend.
+
+![Ad-valorem equivalence per stick](pic/ave.png){#fig-a}
+
+@fig-a shows an ad-valorem equivalence (AVE) of the stick, i.e., tariff/HJE ratio. From this graph, we can see that the AVE changes drastically in January 2018, confirming the possible correlation with noticeable changes in quantity demand in @fig-q. Additionally, we see a divergence of AVE between machine-made and hand-made in the 2020s onwards.
+
+We know that the SKM is by far the driver of revenue for the customs. However, its demand is being caught-up by hand-made cigarette, the SKT. Additionally, the SKM demand seems to switch from SKM1 to SKM2 as well. We note at least two important timing, which is the year 2018 and 2020 where we see a noticeable changes in SKM1, SKM2, and SKT.
+
+At this point, we has little choice but to run elasticity regression 
 
 ## Elasticity estimation
 
-Here we describe our method in getting elasticities, tax-price pass-through and marginal revenue per marginal tax increase, given the data limitation.
+Here we describe our method in getting elasticities. We generally use SUR regression, as discussed above.
 
 Let a standard downward-sloping demand function:
 
 $$
-Q_i=AP_i^{-\varepsilon}
+Q_i=AP_i^{-\varepsilon}Y^{\gamma}\prod_{j \in -i}P_j^{\varepsilon_j}
 $$
 
 which can be approximately log-linearized
 
 $$
-q_i=a-\varepsilon p_i
+q_{i}=a-\varepsilon p_{i} + \gamma y_{i}+\sum_{j\in -i} \varepsilon_j p_j\pm \epsilon_{i}
 $$
 
-where a lowercase is the log version of its uppercase counterparts. We can, thus, econometrically estimated the above equation with a regression. Additionally, we follow the theory in having an income elasticity with GDP per capita as a proxy. We then estimate:
+where a lowercase is the log version of its uppercase counterparts. We can, thus, econometrically estimated the above equation with a regression. 
 
-$$
-q_{i}=a-\varepsilon p_{i} + \gamma y_{i} \pm \epsilon_{i}
-$$
-
-We assume an iid $\epsilon_{it}$ for now and uses own-price elasticity since we lack information on the price of electric cigs. The parameter $\varepsilon$ is the own-price elasticity of demand, which we expect to be negative, while $\gamma$ is the income elasticity of demand which is assumed to be positive.
+We assume an iid $\epsilon_{it}$ for now and uses own-price elasticity since we lack information on the price of electric cigs. The parameter $\varepsilon$ is the own-price elasticity of demand, which we expect to be negative, while $\gamma$ is the income elasticity of demand which is assumed to be positive. We expect the most important $\varepsilon_j$, the cross-price elasticity variable, to have positive number.
 
 We have index $i \in {\text{traditional},\text{SKM},\text{SKT},\text{SPM}}$. That is, we will regress on the level of each type of traditional cigarettes. But we will also regress on aggregate. That is, we regress total demand of traditional cigarettes $Q_{traditional}=\sum_i Q_i$ against a weighted average prices:
 
@@ -181,6 +189,8 @@ $$
 
 ## Results
 
-We use data that are made available by DGCE for us. Data contains production, revenue, base price (HJE) for tax purposes and retail price (HTE) for consumers for various types of traditional and electric cigarettes. Unfortunately, the availability of those data differs quite tremendously. Some are collected monthly, some others are quarterly and annually. Common denominator suggests us to conduct the analysis annually.
+
+
+
 
 ## References {.unnumbered}

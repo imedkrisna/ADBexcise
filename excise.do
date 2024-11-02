@@ -112,6 +112,15 @@ gen ltskt1b=log(tskt1b)
 gen ltskt2=log(tskt2)
 gen ltskt3=log(tskt3)
 
+gen lhskm1=log(tskm1+lskm1)
+gen lhskm2=log(tskm2+lskm2)
+gen lhspm1=log(tspm1+lspm1)
+gen lhspm2=log(tspm2+lspm2)
+gen lhskt1a=log(tskt1a+lskt1a)
+gen lhskt1b=log(tskt1b+lskt1b)
+gen lhskt2=log(tskt2+lskt2)
+gen lhskt3=log(tskt3+lskt3)
+
 gen lqskm=log(qskm)
 gen lqskt=log(qskt)
 gen lqspm=log(qspm)
@@ -123,16 +132,20 @@ gen lpspm=log(pspm)
 // I recorded it at the end of each quarter (i.e., mar, jun, sep, dec) and end of year (dec)
 // Monthly number is imputed by taking a linear difference / trend
 gen lgni=log(gni/pop)
+gen lpop=log(pop)
+
+outreg2 using "sum.doc", replace sum(log)
 
 // globals
 
-global hje llskm1 llskm2 llspm1 llspm2 llskt1a llskt1b llskt2 llskt3 lgni 
-global htp lpskm1 lpskm2 lpspm1 lpspm2 lpskt1a lpskt1b lpskt2 lpskt3 lgni 
-global spec ltskm1 ltskm2 ltspm1 ltspm2 ltskt1a ltskt1b ltskt2 ltskt3 lgni
-global ave askm1 askm2 aspm1 aspm2 askt1a askt1b askt2 askt3 lgni
-global qua lqskm1 lqskm2 lqspm1 lqspm2 lqskt1a lqskt1b lqskt2 lqskt3 lgni
-global rev lrskm1 lrskm2 lrspm1 lrspm2 lrskt1a lrskt1b lrskt2 lrskt3 lgni
-global htphje lplskm1 lplskm2 lplspm1 lplspm2 lplskt1a lplskt1b lplskt2 lplskt3 lgni
+global hje llskm1 llskm2 llspm1 llspm2 llskt1a llskt1b llskt2 llskt3 lgni lpop
+global htp lpskm1 lpskm2 lpspm1 lpspm2 lpskt1a lpskt1b lpskt2 lpskt3 lgni lpop 
+global spec ltskm1 ltskm2 ltspm1 ltspm2 ltskt1a ltskt1b ltskt2 ltskt3 lgni lpop
+global har lhskm1 lhskm2 lhspm1 lhspm2 lhskt1a lhskt1b lhskt2 lhskt3 lgni lpop
+global ave askm1 askm2 aspm1 aspm2 askt1a askt1b askt2 askt3 lgni lpop
+global qua lqskm1 lqskm2 lqspm1 lqspm2 lqskt1a lqskt1b lqskt2 lqskt3 lgni lpop
+global rev lrskm1 lrskm2 lrspm1 lrspm2 lrskt1a lrskt1b lrskt2 lrskt3 lgni lpop
+global htphje lplskm1 lplskm2 lplspm1 lplspm2 lplskt1a lplskt1b lplskt2 lplskt3 lgni lpop
 
 
 // graphing 7 stuff
@@ -227,8 +240,11 @@ outreg2 using "reg/qhtp", word excel replace
 sureg (lqskm1 $ave) (lqskm2 $ave) (lqspm1 $ave) (lqspm2 $ave) (lqskt1a $ave) (lqskt1b $ave) (lqskt2 $ave) (lqskt3 $ave)
 outreg2 using "reg/qave", word excel replace
 
-sureg (lqskm1 lpskm1 lpskm2 lpskt lgni) (lqskm2 lpskm1 lpskm2 lpskt lgni)
+sureg (lqskm1 lpskm1 lpskm2 lpskt lgni) (lqskm2 lpskm1 lpskm2 lpskt lgni) (lqskt1a lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt1b lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt2 lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt3 lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni)
 outreg2 using "reg/qhtp", word excel replace
+
+sureg (lqskm1 $har) (lqskm2 $har) (lqspm1 $har) (lqspm2 $har) (lqskt1a $har) (lqskt1b $har) (lqskt2 $har) (lqskt3 $har)
+outreg2 using "reg/har", word excel replace
 
 /// revenue elasticity
 
