@@ -117,6 +117,14 @@ theme_set(theme_classic())
 
 WHO suggests any tax rate below 70% is deemed too small to reduce smoking [@prasetyo618].
 
+Since the market price data is quite limited, I created some weighted-aggregate variables which is variable names without number. For example, I create:
+
+$$
+pskm = \frac{pskm1 \times qskm1 + pskm2 \times qskm2}{qskm1 + qskm2}
+$$
+
+some prices (both legal and market) and tariff moves together and highly correlated. This is very apparent in SKT, where SKT1a,SKT1b, and SKT2 moves together.
+
 ### Visualization
 
 Data is visualized. I arrange the visualization using a typical pattern. Each variable is visualized 4 times. The first three are each category in each three types (SKM, SKT, and SPM). 
@@ -181,16 +189,38 @@ where a lowercase is the log version of its uppercase counterparts. We can, thus
 
 We assume an iid $\epsilon_{it}$ for now and uses own-price elasticity since we lack information on the price of electric cigs. The parameter $\varepsilon$ is the own-price elasticity of demand, which we expect to be negative, while $\gamma$ is the income elasticity of demand which is assumed to be positive. We expect the most important $\varepsilon_j$, the cross-price elasticity variable, to have positive number.
 
-We have index $i \in {\text{traditional},\text{SKM},\text{SKT},\text{SPM}}$. That is, we will regress on the level of each type of traditional cigarettes. But we will also regress on aggregate. That is, we regress total demand of traditional cigarettes $Q_{traditional}=\sum_i Q_i$ against a weighted average prices:
-
-$$
-P_{traditional}=\frac{\sum_i P_i Qi}{\sum_i Q_i} \ \ for \ i \in \{SKM,SPM,SKT\}
-$$
-
 ## Results
 
+It is important to note that prices (both HTP and HJE) as well as specific tariff rate are highly correlated with each other. Only quantity demand and AVE tariff are not correlated strongly with each other. Here I present these results, but various other regression tables are available in the file accompanying this report.
 
+### Demand elasticity
 
+![table 2. Q vs AVE](pic/tab1.png){#tbl-2}
 
+@tbl-2 shows the results from $\log Q=f(ave)$ regression. lgni is log of GDP per capita, as a proxy for income. AVE of SPM2 is omitted by Stata.
+
+A percentage point increase in SKM1's AVE correlates with the reduction with 15% of its quantity demand. There is no cross-ave elasticity detected in this regression. For SKM2, however, we can see that AVE for SKM1 increases its quantity demand by 12.7%, suggesting a strong substitution between SKM1 and SKM2. For SKT, only SKT3 has a significant cross-AVE elasticity with SKM1.
+
+![table 3. Q vs HTP](pic/tab2.png){#tbl-3}
+
+In @tbl-3, we see the results from $\log Q=f(htp)$ regression, which shows our actual price elasticity. Since we have plenty missing observation in HTP, I had to aggregate some prices and omit SPM, arguing that SPM is not as important as the other two. As can be seen, we have only 11 observations with around 5-6 regressors each. Not ideal.
+
+Unlike with AVE, here, income percapita shows negative correlation with quantity demand, which is surprising. More importantly, our price elasticity don't seem to get along with theory, where own-price is mostly positive. Lack of degree of freedom seems to be very important in this regression, unfortunately. 
+
+![table 4. Revenue vs AVE](pic/tab4.png){#tbl-4}
+
+@tbl-4 is the relationship of $\log Revenue=g(ave)$. Income per capita, shows a positive correlation like with quantity demand, a good start. Unfortunately I cannot get anything significant with the revenue of SKM1, the main contributor to revenue. For SKT, again, SKT3 shows strong correlations with many other AVE but itself.
+
+![table 5. HTP vs HJE](pic/tab3.png){#tbl-5}
+
+Lastly, @tbl-5 shows the relationship between HTP and HJE. This regression suppose to show us how the legal price translates to actual market price. As before, we have only 11 observations due to missing HTP observations so we use some aggregated prices. 
+
+a percent increase in HJE for SKM1 translated to 0.673% in the increase of its market price. This number is only 0.312% for SKM2. Only SKT1a and SKT1b has significant coefficient for its own price. SKT2 is driven by SKT aggregated price, while SKT3 actually correlates positively with SKM aggregated price.
+
+## Conclusion
+
+In this report, we tried to find a demand elasticity. We can see from line chart that the demand for SKM is decreasing quite fast since 2018, while SKT picks up the slack. The SKM decrease is driven mainly by SKM1, which is produced by large firms. SKM2 rises, suggesting a possible bunching. Meanwhile, The SKT is increasing, with SKT3 (which is produced by the smallest firms) leading the charge.
+
+The lack of HTP data is a major problem in our analysis. We can see that the price elasticity is not as expected, with most of the own-price elasticity being positive. This is likely due to the lack of degree of freedom. Our second-best approach is exploiting AVE, which is the ratio between specific tariff and HJE, a reference price set by the government. While HJE seems to be flat, we did find some evidence that there is a strong relationship between HJE and HTP. We do get somewhat expected data from AVE regression, but a better quality data would certainly improve the analysis.
 
 ## References {.unnumbered}

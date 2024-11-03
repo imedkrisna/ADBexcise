@@ -44,18 +44,18 @@ gen plskt2=pskt2/lskt2
 gen plskt3=pskt3/lskt3
 
 // ad-valorem equivalent + weighted average for 3 types
-gen askm1=tskm1/lskm1
-gen askm2=tskm2/lskm2
-gen aspm1=tspm1/lspm1
-gen aspm2=tskm2/lskm2
-gen askt1a=tskt1a/lskt1a
-gen askt1b=tskt1b/lskt1b
-gen askt2=tskt2/lskt2
-gen askt3=tskt3/lskt3
+gen askm1=tskm1/lskm1*100
+gen askm2=tskm2/lskm2*100
+gen aspm1=tspm1/lspm1*100
+gen aspm2=tskm2/lskm2*100
+gen askt1a=tskt1a/lskt1a*100
+gen askt1b=tskt1b/lskt1b*100
+gen askt2=tskt2/lskt2*100
+gen askt3=tskt3/lskt3*100
 
-gen askm=(askm1*qskm1+askm2*qskm2)/qskm
-gen aspm=(aspm1*qspm1+aspm2*qspm2)/qspm
-gen askt=(askt1a*qskt1a+askt2*qskt2+askt1b*qskt1b+askt3*qskt3)/qskt
+gen askm=(askm1*qskm1+askm2*qskm2)/qskm*100
+gen aspm=(aspm1*qspm1+aspm2*qspm2)/qspm*100
+gen askt=(askt1a*qskt1a+askt2*qskt2+askt1b*qskt1b+askt3*qskt3)/qskt*100
 
 // generate logs
 gen llskm1=log(lskm1)
@@ -66,6 +66,18 @@ gen llskt1a=log(lskt1a)
 gen llskt1b=log(lskt1b)
 gen llskt2=log(lskt2)
 gen llskt3=log(lskt3)
+gen llskm=log(lskm)
+gen llspm=log(lspm)
+gen llskt=log(lskt)
+
+gen laskm1=log(askm1)
+gen laskm2=log(askm2)
+gen laspm1=log(aspm1)
+gen laspm2=log(aspm2)
+gen laskt1a=log(askt1a)
+gen laskt1b=log(askt1b)
+gen laskt2=log(askt2)
+gen laskt3=log(askt3)
 
 gen lqskm1=log(qskm1)
 gen lqskm2=log(qskm2)
@@ -136,19 +148,9 @@ gen lpop=log(pop)
 
 outreg2 using "sum.doc", replace sum(log)
 
-// globals
-
-global hje llskm1 llskm2 llspm1 llspm2 llskt1a llskt1b llskt2 llskt3 lgni lpop
-global htp lpskm1 lpskm2 lpspm1 lpspm2 lpskt1a lpskt1b lpskt2 lpskt3 lgni lpop 
-global spec ltskm1 ltskm2 ltspm1 ltspm2 ltskt1a ltskt1b ltskt2 ltskt3 lgni lpop
-global har lhskm1 lhskm2 lhspm1 lhspm2 lhskt1a lhskt1b lhskt2 lhskt3 lgni lpop
-global ave askm1 askm2 aspm1 aspm2 askt1a askt1b askt2 askt3 lgni lpop
-global qua lqskm1 lqskm2 lqspm1 lqspm2 lqskt1a lqskt1b lqskt2 lqskt3 lgni lpop
-global rev lrskm1 lrskm2 lrspm1 lrspm2 lrskt1a lrskt1b lrskt2 lrskt3 lgni lpop
-global htphje lplskm1 lplskm2 lplspm1 lplspm2 lplskt1a lplskt1b lplskt2 lplskt3 lgni lpop
-
-
 // graphing 7 stuff
+
+qui {
 
 twoway (line qskm qspm qskt mo), legend(pos(6) col(4)) name(q4, replace) scheme(s1rcolor)
 twoway (line qskm1 qskm2 mo), legend(pos(6) col(4)) name(q1, replace) scheme(s1rcolor)
@@ -223,6 +225,19 @@ graph combine pl1 pl2 pl3 pl4, col(2) ysize(6) xsize(9) scheme(s1rcolor)
 
 graph export "pic/htphje.png", as(png) name("Graph") replace
 
+}
+
+// with SPM
+
+global hje llskm1 llskm2 llspm1 llspm2 llskt1a llskt1b llskt2 llskt3 lgni
+global htp lpskm1 lpskm2 lpspm1 lpspm2 lpskt1a lpskt1b lpskt2 lpskt3  lgni
+global spec ltskm1 ltskm2 ltspm1 ltspm2 ltskt1a ltskt1b ltskt2 ltskt3 lgni
+global har lhskm1 lhskm2 lhspm1 lhspm2 lhskt1a lhskt1b lhskt2 lhskt3 lgni 
+global ave askm1 askm2 aspm1 aspm2 askt1a askt1b askt2 askt3 lgni 
+global lave laskm1 laskm2 laspm1 laspm2 laskt1a laskt1b laskt2 laskt3 lgni 
+global qua lqskm1 lqskm2 lqspm1 lqspm2 lqskt1a lqskt1b lqskt2 lqskt3 lgni
+global rev lrskm1 lrskm2 lrspm1 lrspm2 lrskt1a lrskt1b lrskt2 lrskt3 lgni
+global htphje lplskm1 lplskm2 lplspm1 lplspm2 lplskt1a lplskt1b lplskt2 lplskt3 lgni 
 // Regression table
 /// Quantity elasticity
 
@@ -237,13 +252,16 @@ sureg (lqskm1 $htp) (lqskm2 $htp) (lqspm1 $htp) (lqspm2 $htp) (lqskt1a $htp) (lq
 outreg2 using "reg/qhtp", word excel replace
 */
 
+sureg (lqskm1 $spec) (lqskm2 $spec) (lqspm1 $spec) (lqspm2 $spec) (lqskt1a $spec) (lqskt1b $spec) (lqskt2 $spec) (lqskt3 $spec)
+outreg2 using "reg/qspec", word excel replace
+
 sureg (lqskm1 $ave) (lqskm2 $ave) (lqspm1 $ave) (lqspm2 $ave) (lqskt1a $ave) (lqskt1b $ave) (lqskt2 $ave) (lqskt3 $ave)
 outreg2 using "reg/qave", word excel replace
 
-sureg (lqskm1 lpskm1 lpskm2 lpskt lgni) (lqskm2 lpskm1 lpskm2 lpskt lgni) (lqskt1a lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt1b lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt2 lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt3 lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni)
-outreg2 using "reg/qhtp", word excel replace
+sureg (lqskm1 $lave) (lqskm2 $lave) (lqspm1 $lave) (lqspm2 $lave) (lqskt1a $lave) (lqskt1b $lave) (lqskt2 $lave) (lqskt3 $lave)
+outreg2 using "reg/qlave", word excel replace
 
-sureg (lpskm1 lpskm1 lpskm2 lpskt lgni) (lqskm2 lpskm1 lpskm2 lpskt lgni) (lqskt1a lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt1b lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt2 lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt3 lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni)
+sureg (lqskm1 lpskm1 lpskm2 lpskt lgni) (lqskm2 lpskm1 lpskm2 lpskt lgni) (lqskt1a lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt1b lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt2 lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt3 lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni)
 outreg2 using "reg/qhtp", word excel replace
 
 sureg (lqskm1 $har) (lqskm2 $har) (lqspm1 $har) (lqspm2 $har) (lqskt1a $har) (lqskt1b $har) (lqskt2 $har) (lqskt3 $har)
@@ -263,6 +281,12 @@ outreg2 using "reg/rhtp", word excel replace
 sureg (lrskm1 $ave) (lrskm2 $ave) (lrspm1 $ave) (lrspm2 $ave) (lrskt1a $ave) (lrskt1b $ave) (lrskt2 $ave) (lrskt3 $ave)
 outreg2 using "reg/rave", word excel replace
 
+sureg (lrskm1 $lave) (lrskm2 $lave) (lrspm1 $lave) (lrspm2 $lave) (lrskt1a $lave) (lrskt1b $lave) (lrskt2 $lave) (lrskt3 $lave)
+outreg2 using "reg/rlave", word excel replace
+
+sureg (lrskm1 $spec) (lrskm2 $spec) (lrspm1 $spec) (lrspm2 $spec) (lrskt1a $spec) (lrskt1b $spec) (lrskt2 $spec) (lrskt3 $spec)
+outreg2 using "reg/rspec", word excel replace
+
 /// price passthrough
 
 /*
@@ -271,3 +295,109 @@ sureg (llskm1 $htp) (llskm2 $htp) (llspm1 $htp) (llspm2 $htp) (llskt1a $htp) (ll
 outreg2 using "reg/passthru", word excel replace
 */
 
+sureg (lpskm1 llskm1 llskm2 llskt) (lpskm2 llskm1 llskm2 llskt) (lpskt1a llskt1a llskt llskm) (lpskt1b llskt1b llskt llskm ) (lpskt2 llskt2 llskt llskm ) (lpskt3 llskt llskt3 llskm )
+
+outreg2 using "reg/ppt", word excel replace
+
+sureg (lpskm1 askm1 askm2 askt) (lpskm2 askm1 askm2 askt) (lpskt1a askt1a askt askm) (lpskt1b askt1b askt askm ) (lpskt2 askt2 askt askm ) (lpskt3 askt askt3 askm )
+
+outreg2 using "reg/appt", word excel replace
+
+/*
+// without SPM
+
+// Regression table
+/// Quantity elasticity
+
+
+global hje llskm1 llskm2 llskt1a llskt1b llskt2 llskt3 lgni
+global htp lpskm1 lpskm2 lpskt1a lpskt1b lpskt2 lpskt3  lgni
+global spec ltskm1 ltskm2 ltskt1a ltskt1b ltskt2 ltskt3 lgni
+global har lhskm1 lhskm2 lhskt1a lhskt1b lhskt2 lhskt3 lgni 
+global ave askm1 askm2 askt1a askt1b askt2 askt3 lgni 
+global lave laskm1 laskm2 laskt1a laskt1b laskt2 laskt3 lgni 
+global qua lqskm1 lqskm2 lqskt1a lqskt1b lqskt2 lqskt3 lgni
+global rev lrskm1 lrskm2 lrskt1a lrskt1b lrskt2 lrskt3 lgni
+global htphje lplskm1 lplskm2 lplskt1a lplskt1b lplskt2 lplskt3 lgni 
+
+
+tsset mo
+
+sureg (lqskm1 $hje) (lqskm2 $hje) (lqskt1a $hje) (lqskt1b $hje) (lqskt2 $hje) (lqskt3 $hje)
+outreg2 using "rega/qhje", word excel replace
+
+/*
+Below cant be done due to limited variations (SPM does not change very frequently)
+sureg (lqskm1 $htp) (lqskm2 $htp) (lqspm1 $htp) (lqspm2 $htp) (lqskt1a $htp) (lqskt1b $htp) (lqskt2 $htp) (lqskt3 $htp)
+outreg2 using "reg/qhtp", word excel replace
+*/
+
+sureg (lqskm1 $spec) (lqskm2 $spec) (lqskt1a $spec) (lqskt1b $spec) (lqskt2 $spec) (lqskt3 $spec)
+outreg2 using "rega/qspec", word excel replace
+
+sureg (lqskm1 $ave) (lqskm2 $ave) (lqskt1a $ave) (lqskt1b $ave) (lqskt2 $ave) (lqskt3 $ave)
+outreg2 using "rega/qave", word excel replace
+
+sureg (lqskm1 $lave) (lqskm2 $lave) (lqskt1a $lave) (lqskt1b $lave) (lqskt2 $lave) (lqskt3 $lave)
+outreg2 using "rega/qlave", word excel replace
+
+sureg (lqskm1 lpskm1 lpskm2 lpskt lgni) (lqskm2 lpskm1 lpskm2 lpskt lgni) (lqskt1a lpskt1a lpskt lpskm lgni) (lqskt1b lpskt lpskt1b lpskm lgni) (lqskt2 lpskt2 lpskt lpskm lgni) (lqskt3 lpskt lpskt3 lpskm lgni)
+outreg2 using "rega/qhtp", word excel replace
+
+sureg (lqskm1 $har) (lqskm2 $har) (lqspm1 $har) (lqspm2 $har) (lqskt1a $har) (lqskt1b $har) (lqskt2 $har) (lqskt3 $har)
+outreg2 using "rega/har", word excel replace
+
+/// revenue elasticity
+
+sureg (lrskm1 $hje) (lrskm2 $hje) (lrspm1 $hje) (lrspm2 $hje) (lrskt1a $hje) (lrskt1b $hje) (lrskt2 $hje) (lrskt3 $hje)
+outreg2 using "rega/rhje", word excel replace
+
+/*
+Below cant be done due to limited variations (SPM does not change very frequently)
+sureg (lrskm1 $htp) (lrskm2 $htp) (lrspm1 $htp) (lrspm2 $htp) (lrskt1a $htp) (lrskt1b $htp) (lrskt2 $htp) (lrskt3 $htp)
+outreg2 using "reg/rhtp", word excel replace 
+*/
+
+sureg (lrskm1 $ave) (lrskm2 $ave) (lrspm1 $ave) (lrspm2 $ave) (lrskt1a $ave) (lrskt1b $ave) (lrskt2 $ave) (lrskt3 $ave)
+outreg2 using "rega/rave", word excel replace
+
+sureg (lrskm1 $lave) (lrskm2 $lave) (lrspm1 $lave) (lrspm2 $lave) (lrskt1a $lave) (lrskt1b $lave) (lrskt2 $lave) (lrskt3 $lave)
+outreg2 using "rega/rlave", word excel replace
+
+sureg (lrskm1 $spec) (lrskm2 $spec) (lrspm1 $spec) (lrspm2 $spec) (lrskt1a $spec) (lrskt1b $spec) (lrskt2 $spec) (lrskt3 $spec)
+outreg2 using "rega/rspec", word excel replace
+
+/// price passthrough
+
+/*
+Below cant be done due to limited variations (SPM does not change very frequently)
+sureg (llskm1 $htp) (llskm2 $htp) (llspm1 $htp) (llspm2 $htp) (llskt1a $htp) (llskt1b $htp) (llskt2 $htp) (llskt3 $htp)
+outreg2 using "reg/passthru", word excel replace
+*/
+
+sureg (lpskm1 llskm1 llskm2 llskt) (lpskm2 llskm1 llskm2 llskt) (lpskt1a llskt1a llskt llskm) (lpskt1b llskt1b llskt llskm ) (lpskt2 llskt2 llskt llskm ) (lpskt3 llskt llskt3 llskm )
+
+outreg2 using "rega/ppt", word excel replace
+
+*/
+
+// Robustness test
+
+gen z1=tskm1/tskt
+gen z2=tskm1/tskm2
+gen z3=tskm2/tskt
+gen z4=tskt1a/tskm
+gen z5=tskt1b/tskm
+gen z6=tskt2/tskm
+gen z7=tskt3/tskm
+sureg (lqskm1 z1 z2 lgni) (lqskm2 z2 z3 lgni) (lqskt1a z4 z5 z6 z7 lgni) (lqskt1b z4 z5 z6 z7 lgni) (lqskt2 z4 z5 z6 z7 lgni) (lqskt3 z4 z5 z6 z7 lgni) 
+outreg2 using "reg/robustness1", word excel replace
+gen y1=pskm1/pskt
+gen y2=pskm1/pskm2
+gen y3=pskm2/pskt
+gen y4=pskt1a/pskm
+gen y5=pskt1b/pskm
+gen y6=pskt2/pskm
+gen y7=pskt3/pskm
+sureg (lqskm1 y1 y2 lgni) (lqskm2 y2 y3 lgni) (lqskt1a y4 y5 y6 y7 lgni) (lqskt1b y4 y5 y6 y7 lgni) (lqskt2 y4 y5 y6 y7 lgni) (lqskt3 y4 y5 y6 y7 lgni) 
+outreg2 using "reg/robustness2", word excel replace

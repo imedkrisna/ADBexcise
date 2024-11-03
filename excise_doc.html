@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Krisna Gupta">
-<meta name="dcterms.date" content="2024-10-14">
+<meta name="dcterms.date" content="2024-11-03">
 
 <title>excise report</title>
 <style>
@@ -114,7 +114,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 14, 2024</p>
+      <p class="date">November 3, 2024</p>
     </div>
   </div>
   
@@ -299,121 +299,172 @@ Table&nbsp;1: literature summary
 <p>mo lskm1 lskm2 lspm1 lspm2 lskt1a lskt1b lskt2 lskt3 qskm1 qskm2 qspm1 qspm2 qskt1a qskt1b qskt2 qskt3 tskm1 tskm2 tspm1 tspm2 tskt1a tskt1b tskt2 tskt3 rskm1 rskm2 rspm1 rspm2 rskt1a rskt1b rskt2 rskt3 pskm1 pskm2 pspm1 pspm2 pskt1a pskt1b pskt2 pskt3</p>
 </blockquote>
 <p>WHO suggests any tax rate below 70% is deemed too small to reduce smoking <span class="citation" data-cites="prasetyo618">(<a href="#ref-prasetyo618" role="doc-biblioref">Prasetyo and Adrison 2020</a>)</span>.</p>
+<p>Since the market price data is quite limited, I created some weighted-aggregate variables which is variable names without number. For example, I create:</p>
+<p><span class="math display">\[
+pskm = \frac{pskm1 \times qskm1 + pskm2 \times qskm2}{qskm1 + qskm2}
+\]</span></p>
+<p>some prices (both legal and market) and tariff moves together and highly correlated. This is very apparent in SKT, where SKT1a,SKT1b, and SKT2 moves together.</p>
 </section>
 <section id="visualization" class="level3">
 <h3 class="anchored" data-anchor-id="visualization">Visualization</h3>
-<p>Data is visualized</p>
+<p>Data is visualized. I arrange the visualization using a typical pattern. Each variable is visualized 4 times. The first three are each category in each three types (SKM, SKT, and SPM).</p>
+<p>For example, top-left panel is SKM1 and SKM2, top right is SPM1 and SPM2, and the bottom-left panel is SKT1a, SKT1b, SKT2 and SKT3. The bottom-right shows either the aggregate or the weighted average of SKM, SPM, and SKT.</p>
 <div id="fig-q" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-q-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="pic/demand.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-q-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: aaa
+Figure&nbsp;1: Quantity demand for excise ribbon
 </figcaption>
 </figure>
 </div>
-<p>this is <a href="#fig-q" class="quarto-xref">Figure&nbsp;1</a></p>
+<p><a href="#fig-q" class="quarto-xref">Figure&nbsp;1</a> represents the quantity demand of excise ribbon, which is measured by stick. We can see some trend. The SKM1 seems to be gradually reduced, with a clear downtrend starting on mid-2018. Meanwhile, SKM2 gradually rises, suggesting a possible bunching, where large firms distribute its production to many smaller firms to get SKM2 tariff brackett.</p>
+<p>Similar trend can be seen in SPM, which shows clear convergence where the more expensive one dwindles down. On aggregate, we can see clear reduction in this type. Lastly, we can see clear winner from SKT, which is the SKT3. Again, cutoff point is around mid-2018.</p>
 <div id="fig-r" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="pic/revenue.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: bbb
+Figure&nbsp;2: Tariff Revenue
 </figcaption>
 </figure>
 </div>
-<p>this is <a href="#fig-r" class="quarto-xref">Figure&nbsp;2</a></p>
+<p>We can infer similar similar situation from <a href="#fig-r" class="quarto-xref">Figure&nbsp;2</a>, which shows revenue generated from such excise. We do still see upward trend amid increasing tariff overall. However, the stagnation from SPM isn’t matched by the increase in SKT’s revenue.</p>
 <div id="fig-l" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-l-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="pic/hje.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-l-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: zzz
+Figure&nbsp;3: Legal price per stick (HJE)
 </figcaption>
 </figure>
 </div>
-<p>This is <a href="#fig-l" class="quarto-xref">Figure&nbsp;3</a></p>
+<p><a href="#fig-l" class="quarto-xref">Figure&nbsp;3</a> shows the legal price, HJE. This is the price set by the customs as a tariff reference. The HJE changes only few times in a year, which explains the various flat line.</p>
+<p>We see a noticable reduction of HJE for SKT2 and SKT3 in June 2018. The same cannot be said for the rest of the cigarette types. In June 2020, we see another noticable spike especially in the machine cigarettes. We don’t see the same thing in SKT, however.</p>
 <div id="fig-p" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-p-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="pic/htp.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: weqs
+Figure&nbsp;4: Market price per stick
 </figcaption>
 </figure>
 </div>
-<p>This is <a href="#fig-p" class="quarto-xref">Figure&nbsp;4</a></p>
+<p><a href="#fig-p" class="quarto-xref">Figure&nbsp;4</a> shows the market price surveyed by the customs. Here we have many missing observation (months without a dot) because the customs do not conduct monthly survey. We do see a noticable divergence of price in January 2020 between machine-made and hand-made cigarettes (bottom-right).</p>
 <div id="fig-lp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="pic/htphje.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: wewew
+Figure&nbsp;5: Ratio between market price and legal price
 </figcaption>
 </figure>
 </div>
-<p>This is <a href="#fig-lp" class="quarto-xref">Figure&nbsp;5</a></p>
+<p><a href="#fig-lp" class="quarto-xref">Figure&nbsp;5</a> shows a ratio between market price and legal price. A high HTP/HJE ratio may suggests a degree of market power or high demand. More importantly, if the HTP/HJE ratio generally reasonably flat, then we can use HJE (which observation completes) as a proxy for HTP (which contain missing observations.</p>
+<p>Unfortunately, this ratio varies considerably for all observations.Generally, HTP/HJE ratio is lower for machine-made cigarettes compared to hand-made ones, even reaching below 1 after January 2020. This ratio is driven mainly by the two lowest brackett, SKT2 and SKT3 (lower-left).</p>
 <div id="fig-t" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-t-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="pic/tariff.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: auooo
+Figure&nbsp;6: Excise tariff per stick
 </figcaption>
 </figure>
 </div>
-<p>Meanwhile, <a href="#fig-t" class="quarto-xref">Figure&nbsp;6</a> shows</p>
+<p>Meanwhile, <a href="#fig-t" class="quarto-xref">Figure&nbsp;6</a> shows tariff charged per stick. We can see a pattern resembling the HJE since the tariff is enacted based on HJE. While some SKT got HJE reduction, tariff remains increasing in trend.</p>
 <div id="fig-a" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="pic/ave.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: eeaeaa
+Figure&nbsp;7: Ad-valorem equivalence per stick
 </figcaption>
 </figure>
 </div>
-<p><a href="#fig-a" class="quarto-xref">Figure&nbsp;7</a> shows</p>
+<p><a href="#fig-a" class="quarto-xref">Figure&nbsp;7</a> shows an ad-valorem equivalence (AVE) of the stick, i.e., tariff/HJE ratio. From this graph, we can see that the AVE changes drastically in January 2018, confirming the possible correlation with noticeable changes in quantity demand in <a href="#fig-q" class="quarto-xref">Figure&nbsp;1</a>. Additionally, we see a divergence of AVE between machine-made and hand-made in the 2020s onwards.</p>
+<p>We know that the SKM is by far the driver of revenue for the customs. However, its demand is being caught-up by hand-made cigarette, the SKT. Additionally, the SKM demand seems to switch from SKM1 to SKM2 as well. We note at least two important timing, which is the year 2018 and 2020 where we see a noticeable changes in SKM1, SKM2, and SKT.</p>
+<p>At this point, we has little choice but to run elasticity regression</p>
 </section>
 </section>
 <section id="elasticity-estimation" class="level2">
 <h2 class="anchored" data-anchor-id="elasticity-estimation">Elasticity estimation</h2>
-<p>Here we describe our method in getting elasticities, tax-price pass-through and marginal revenue per marginal tax increase, given the data limitation.</p>
+<p>Here we describe our method in getting elasticities. We generally use SUR regression, as discussed above.</p>
 <p>Let a standard downward-sloping demand function:</p>
 <p><span class="math display">\[
-Q_i=AP_i^{-\varepsilon}
+Q_i=AP_i^{-\varepsilon}Y^{\gamma}\prod_{j \in -i}P_j^{\varepsilon_j}
 \]</span></p>
 <p>which can be approximately log-linearized</p>
 <p><span class="math display">\[
-q_i=a-\varepsilon p_i
+q_{i}=a-\varepsilon p_{i} + \gamma y_{i}+\sum_{j\in -i} \varepsilon_j p_j\pm \epsilon_{i}
 \]</span></p>
-<p>where a lowercase is the log version of its uppercase counterparts. We can, thus, econometrically estimated the above equation with a regression. Additionally, we follow the theory in having an income elasticity with GDP per capita as a proxy. We then estimate:</p>
-<p><span class="math display">\[
-q_{i}=a-\varepsilon p_{i} + \gamma y_{i} \pm \epsilon_{i}
-\]</span></p>
-<p>We assume an iid <span class="math inline">\(\epsilon_{it}\)</span> for now and uses own-price elasticity since we lack information on the price of electric cigs. The parameter <span class="math inline">\(\varepsilon\)</span> is the own-price elasticity of demand, which we expect to be negative, while <span class="math inline">\(\gamma\)</span> is the income elasticity of demand which is assumed to be positive.</p>
-<p>We have index <span class="math inline">\(i \in {\text{traditional},\text{SKM},\text{SKT},\text{SPM}}\)</span>. That is, we will regress on the level of each type of traditional cigarettes. But we will also regress on aggregate. That is, we regress total demand of traditional cigarettes <span class="math inline">\(Q_{traditional}=\sum_i Q_i\)</span> against a weighted average prices:</p>
-<p><span class="math display">\[
-P_{traditional}=\frac{\sum_i P_i Qi}{\sum_i Q_i} \ \ for \ i \in \{SKM,SPM,SKT\}
-\]</span></p>
+<p>where a lowercase is the log version of its uppercase counterparts. We can, thus, econometrically estimated the above equation with a regression.</p>
+<p>We assume an iid <span class="math inline">\(\epsilon_{it}\)</span> for now and uses own-price elasticity since we lack information on the price of electric cigs. The parameter <span class="math inline">\(\varepsilon\)</span> is the own-price elasticity of demand, which we expect to be negative, while <span class="math inline">\(\gamma\)</span> is the income elasticity of demand which is assumed to be positive. We expect the most important <span class="math inline">\(\varepsilon_j\)</span>, the cross-price elasticity variable, to have positive number.</p>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>We use data that are made available by DGCE for us. Data contains production, revenue, base price (HJE) for tax purposes and retail price (HTE) for consumers for various types of traditional and electric cigarettes. Unfortunately, the availability of those data differs quite tremendously. Some are collected monthly, some others are quarterly and annually. Common denominator suggests us to conduct the analysis annually.</p>
-<pre><code>(1) (2) (3) (4) (5) (6) (7) (8)</code></pre>
-<p>VARIABLES qskm1 qskm2 qspm1 qspm2 qskt1a qskt1b qskt2 qskt3</p>
-<p>lskm1 1.330e+08** 1.186e+06 -2.959e+06 1.990e+06 -1.073e+07 -1.773e+07 -4.277e+06 -2.058e+07<strong> (6.574e+07) (1.702e+07) (7.312e+06) (1.972e+06) (6.615e+06) (1.196e+07) (2.924e+06) (9.556e+06) lskm2 1.332e+08</strong>* 4.644e+07*** -2.890e+06 4.703e+06** 7.543e+06 1.896e+07** 4.848e+06* 1.801e+07<strong> (3.244e+07) (1.332e+07) (6.962e+06) (1.876e+06) (5.666e+06) (8.987e+06) (2.602e+06) (8.327e+06) lspm1 -1.291e+08</strong> -5.959e+06 2.503e+06 -2.582e+06 8.094e+06 1.267e+07 2.733e+06 1.631e+07<strong> (5.281e+07) (1.404e+07) (6.160e+06) (1.661e+06) (5.506e+06) (9.834e+06) (2.444e+06) (7.968e+06) lspm2 -6.664e+07</strong>* -2.291e+07*** 1.245e+06 -2.292e+06** -3.954e+06 -9.584e+06** -2.519e+06* -9.907e+06<strong> (1.835e+07) (7.042e+06) (3.623e+06) (976,112) (2.972e+06) (4.770e+06) (1.361e+06) (4.361e+06) lskt1a -8.595e+07 1.413e+06 3.533e+06 -3.883e+06</strong> 3.102e+06 1.223e+07 4.953e+06* 1.632e+07<em> (6.610e+07) (1.690e+07) (7.189e+06) (1.939e+06) (6.542e+06) (1.189e+07) (2.886e+06) (9.442e+06) lskt1b 7.914e+07 -9.223e+06 -5.081e+06 5.539e+06<strong> -5.417e+06 -2.287e+07 -8.059e+06* -2.347e+07<em> (9.703e+07) (2.463e+07) (1.042e+07) (2.810e+06) (9.514e+06) (1.735e+07) (4.192e+06) (1.373e+07) lskt2 -1.285e+07 4.776e+06 670,502 37,378 5.845e+06</em></strong> 9.528e+06</em>** 2.685e+06*** 9.380e+06*** (1.959e+07) (5.035e+06) (2.151e+06) (580,106) (1.953e+06) (3.541e+06) (862,200) (2.820e+06) o.lskt3 - - - - - - - -</p>
-<p>o._cons 0<br>
-(0)<br>
-Constant -6.408e+09*** 2.572e+09** -9.438e+08*** -1.123e+09 4.292e+08 2.794e+07 -4.597e+09*** (1.875e+09) (1.080e+09) (2.907e+08) (8.397e+08) (1.229e+09) (3.926e+08) (1.244e+09)</p>
-<p>Observations 120 120 120 120 120 120 120 120 R-squared 0.215 0.463 0.320 0.188 0.164 0.097 0.158 0.781 Standard errors in parentheses<br>
-*** p&lt;0.01, ** p&lt;0.05, * p&lt;0.1</p>
+<p>It is important to note that prices (both HTP and HJE) as well as specific tariff rate are highly correlated with each other. Only quantity demand and AVE tariff are not correlated strongly with each other. Here I present these results, but various other regression tables are available in the file accompanying this report.</p>
+<section id="demand-elasticity" class="level3">
+<h3 class="anchored" data-anchor-id="demand-elasticity">Demand elasticity</h3>
+<div id="tbl-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: table 2. Q vs AVE
+</figcaption>
+<div aria-describedby="tbl-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/tab1.png" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+<p><a href="#tbl-2" class="quarto-xref">Table&nbsp;2</a> shows the results from <span class="math inline">\(\log Q=f(ave)\)</span> regression. lgni is log of GDP per capita, as a proxy for income. AVE of SPM2 is omitted by Stata.</p>
+<p>A percentage point increase in SKM1’s AVE correlates with the reduction with 15% of its quantity demand. There is no cross-ave elasticity detected in this regression. For SKM2, however, we can see that AVE for SKM1 increases its quantity demand by 12.7%, suggesting a strong substitution between SKM1 and SKM2. For SKT, only SKT3 has a significant cross-AVE elasticity with SKM1.</p>
+<div id="tbl-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: table 3. Q vs HTP
+</figcaption>
+<div aria-describedby="tbl-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/tab2.png" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+<p>In <a href="#tbl-3" class="quarto-xref">Table&nbsp;3</a>, we see the results from <span class="math inline">\(\log Q=f(htp)\)</span> regression, which shows our actual price elasticity. Since we have plenty missing observation in HTP, I had to aggregate some prices and omit SPM, arguing that SPM is not as important as the other two. As can be seen, we have only 11 observations with around 5-6 regressors each. Not ideal.</p>
+<p>Unlike with AVE, here, income percapita shows negative correlation with quantity demand, which is surprising. More importantly, our price elasticity don’t seem to get along with theory, where own-price is mostly positive. Lack of degree of freedom seems to be very important in this regression, unfortunately.</p>
+<div id="tbl-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: table 4. Revenue vs AVE
+</figcaption>
+<div aria-describedby="tbl-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/tab4.png" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+<p><a href="#tbl-4" class="quarto-xref">Table&nbsp;4</a> is the relationship of <span class="math inline">\(\log Revenue=g(ave)\)</span>. Income per capita, shows a positive correlation like with quantity demand, a good start. Unfortunately I cannot get anything significant with the revenue of SKM1, the main contributor to revenue. For SKT, again, SKT3 shows strong correlations with many other AVE but itself.</p>
+<div id="tbl-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: table 5. HTP vs HJE
+</figcaption>
+<div aria-describedby="tbl-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/tab3.png" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+<p>Lastly, <a href="#tbl-5" class="quarto-xref">Table&nbsp;5</a> shows the relationship between HTP and HJE. This regression suppose to show us how the legal price translates to actual market price. As before, we have only 11 observations due to missing HTP observations so we use some aggregated prices.</p>
+<p>a percent increase in HJE for SKM1 translated to 0.673% in the increase of its market price. This number is only 0.312% for SKM2. Only SKT1a and SKT1b has significant coefficient for its own price. SKT2 is driven by SKT aggregated price, while SKT3 actually correlates positively with SKM aggregated price.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>In this report, we tried to find a demand elasticity. We can see from line chart that the demand for SKM is decreasing quite fast since 2018, while SKT picks up the slack. The SKM decrease is driven mainly by SKM1, which is produced by large firms. SKM2 rises, suggesting a possible bunching. Meanwhile, The SKT is increasing, with SKT3 (which is produced by the smallest firms) leading the charge.</p>
+<p>The lack of HTP data is a major problem in our analysis. We can see that the price elasticity is not as expected, with most of the own-price elasticity being positive. This is likely due to the lack of degree of freedom. Our second-best approach is exploiting AVE, which is the ratio between specific tariff and HJE, a reference price set by the government. While HJE seems to be flat, we did find some evidence that there is a strong relationship between HJE and HTP. We do get somewhat expected data from AVE regression, but a better quality data would certainly improve the analysis.</p>
 </section>
 <section id="references" class="level2 unnumbered">
 
