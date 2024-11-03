@@ -243,6 +243,9 @@ outreg2 using "reg/qave", word excel replace
 sureg (lqskm1 lpskm1 lpskm2 lpskt lgni) (lqskm2 lpskm1 lpskm2 lpskt lgni) (lqskt1a lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt1b lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt2 lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt3 lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni)
 outreg2 using "reg/qhtp", word excel replace
 
+sureg (lpskm1 lpskm1 lpskm2 lpskt lgni) (lqskm2 lpskm1 lpskm2 lpskt lgni) (lqskt1a lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt1b lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt2 lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni) (lqskt3 lpskt1a lpskt1b lpskt2 lpskt3 lpskm lgni)
+outreg2 using "reg/qhtp", word excel replace
+
 sureg (lqskm1 $har) (lqskm2 $har) (lqspm1 $har) (lqspm2 $har) (lqskt1a $har) (lqskt1b $har) (lqskt2 $har) (lqskt3 $har)
 outreg2 using "reg/har", word excel replace
 
