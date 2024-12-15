@@ -29,7 +29,7 @@ While all of these questions are extremely important, we find the answer to not 
 
 ## Literatures
 
-We rely on three papers for our desk investigation which is summarized in @tbl-1.
+We rely on four papers for our desk investigation which is summarized in @tbl-1.
 
 @RN investigates whether smokers in general are myopic or rational addicts. They utilise 2SLS and GMM along with IFLS data with 1783 total observations to conduct their study. According to this consumer-side study, the price elasticity of demand for traditional tobacco is around -0.38 to -0.57. They also controls for income with total expenditure as the proxy.
 
@@ -37,15 +37,18 @@ We rely on three papers for our desk investigation which is summarized in @tbl-1
 
 @prasetyo618 utilise transactional data on the firm level, 2005-2017, with total 32,711 observations (around 2,500 firms per year). They get the data from DGCE. They look at the tax-price pass through, which is the impact of changes in tax to the firms' pricing strategy. They also examine the pass-through effect on three types of traditional cigarettes, namely SKT, SKM and SPM. They find that an increase of 1% of tax rate leads to an increase of prices by around 0.15, 0.36 and 0.77 for SKT, SKM and SPM respectively.
 
+Lastly, @cisdi estimate to what extent price of cigarettes correlates with cessation (price elasticity of cessation). The premise is a high enough excise (which consequently increase prices) would lead to more people quit smoking. They use national and provincial level price. They use various individual level characteristics as control. They find that 10-percent increase in cigarette price increase the probability of cessation by 0.15-0.17 percent. They use a 2021 survey data, Global Adult Tobacco Survey (GATS).
+
 | paper | finding | data | obs year | N |
 |---------------|---------------|---------------|---------------|---------------|
 | @RN | elasticity (-0.38 to -0.57) | IFLS | 1993,1997,2000 | 1783 |
 | @nach | budget share | Susenas, PODES, RISKESDAS | 2014 | 285,400 |
 | @prasetyo618 | tax-price passtrough | firm transactions from DGCE | 2005-2017 | 32,711 |
+| @cisdi | elasticity of cessation (0.015-0.017) | GATS | 2021 | 9,018 |
 
 : literature summary {#tbl-1 .striped .hover}
 
-For objectives, this report bear similarity with @RN the most, albeit it is indeed important to see a tax-price pass-through a la @prasetyo618. We do have a production data of different types of cigarettes, but our data lack firm level richness as @prasetyo618[^1]. Generally we do not look at the question posed by @nach, but This is still an important question to adhere by DGCE. The reason is because using excise as an instrument to reduce smoking may lead to a reduction of a household's nutrient intake.
+For objectives, this report bear similarity with @RN the most, albeit it is indeed important to see a tax-price pass-through a la @prasetyo618. We do have a production data of different types of cigarettes, but our data lack firm level richness as @prasetyo618[^1]. @cisdi bear some resemblence but it do not count cross-price elasticity since their price data do not distinguish between machine-made and hand-made. Generally we do not look at the question posed by @nach, but This is still an important question to adhere by DGCE. The reason is because using excise as an instrument to reduce smoking may lead to a reduction of a household's nutrient intake.
 
 [^1]: interestingly, they also sourced the data from DGCE.
 
@@ -55,7 +58,7 @@ For objectives, this report bear similarity with @RN the most, albeit it is inde
 
 On the last note, none of those are looking at electric cigarettes.
 
-On Method, we generally use @zellner which developed Seemingly Unrelated Regression (SUR) which is widely used for cross-price elasticity calculation.
+On Method, we generally use @zellner which developed Seemingly Unrelated Regression (SUR) which is widely used for cross-price elasticity estimation.
 
 ## Data
 
