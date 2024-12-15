@@ -49,6 +49,9 @@
 \ql pskt3\cell\qc 11\cell\qc 590.9\cell\qc 144.9\cell\qc 341\cell\qc 754\cell\row
 \ql gni\cell\qc 120\cell\qc 2.775e+15\cell\qc 5.738e+14\cell\qc 1.825e+15\cell\qc 3.875e+15\cell\row
 \ql pop\cell\qc 120\cell\qc 2.666e+08\cell\qc 7.059e+06\cell\qc 2.535e+08\cell\qc 2.775e+08\cell\row
+\ql pk\cell\qc 120\cell\qc 15,990\cell\qc 2,508\cell\qc 11,433\cell\qc 20,917\cell\row
+\ql pkf\cell\qc 120\cell\qc 17,688\cell\qc 3,430\cell\qc 12,033\cell\qc 25,635\cell\row
+\ql pp\cell\qc 120\cell\qc 19,884\cell\qc 4,437\cell\qc 12,300\cell\qc 29,417\cell\row
 \ql qskm\cell\qc 120\cell\qc 1.958e+10\cell\qc 5.944e+09\cell\qc 7.135e+09\cell\qc 3.681e+10\cell\row
 \ql qspm\cell\qc 120\cell\qc 1.266e+09\cell\qc 6.393e+08\cell\qc 7.996e+07\cell\qc 3.614e+09\cell\row
 \ql qskt\cell\qc 120\cell\qc 6.792e+09\cell\qc 2.462e+09\cell\qc 2.033e+09\cell\qc 1.694e+10\cell\row
@@ -161,6 +164,15 @@
 \ql lpskm\cell\qc 11\cell\qc 7.108\cell\qc 0.245\cell\qc 6.706\cell\qc 7.424\cell\row
 \ql lpskt\cell\qc 11\cell\qc 6.804\cell\qc 0.166\cell\qc 6.452\cell\qc 6.936\cell\row
 \ql lpspm\cell\qc 11\cell\qc 7.099\cell\qc 0.284\cell\qc 6.581\cell\qc 7.443\cell\row
+\ql lpk\cell\qc 120\cell\qc 9.667\cell\qc 0.160\cell\qc 9.344\cell\qc 9.948\cell\row
+\ql lpkf\cell\qc 120\cell\qc 9.762\cell\qc 0.194\cell\qc 9.395\cell\qc 10.15\cell\row
+\ql lpp\cell\qc 120\cell\qc 9.872\cell\qc 0.231\cell\qc 9.417\cell\qc 10.29\cell\row
+\ql apk\cell\qc 120\cell\qc 0.0143\cell\qc 0.00131\cell\qc 0.0109\cell\qc 0.0171\cell\row
+\ql apkf\cell\qc 120\cell\qc 0.0335\cell\qc 0.00468\cell\qc 0.0278\cell\qc 0.0434\cell\row
+\ql appp\cell\qc 120\cell\qc 0.0293\cell\qc 0.00455\cell\qc 0.0190\cell\qc 0.0396\cell\row
+\ql lapk\cell\qc 120\cell\qc -4.252\cell\qc 0.0933\cell\qc -4.521\cell\qc -4.066\cell\row
+\ql lapkf\cell\qc 120\cell\qc -3.405\cell\qc 0.135\cell\qc -3.584\cell\qc -3.136\cell\row
+\ql lappp\cell\qc 120\cell\qc -3.544\cell\qc 0.157\cell\qc -3.961\cell\qc -3.230\cell\row
 \ql lgni\cell\qc 120\cell\qc 16.14\cell\qc 0.180\cell\qc 15.79\cell\qc 16.45\cell\row
 \ql lpop\cell\qc 120\cell\qc 19.40\cell\qc 0.0266\cell\qc 19.35\cell\qc 19.44\cell\row
 \trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx1296\clbrdrb\brdrs\cellx1872\clbrdrb\brdrs\cellx3312\clbrdrb\brdrs\cellx4752\clbrdrb\brdrs\cellx6192\clbrdrb\brdrs\cellx7632

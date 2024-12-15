@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Krisna Gupta">
+<meta name="dcterms.date" content="2024-12-15">
+
+<title>excise report</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="excise_doc_v2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="excise_doc_v2_files/libs/quarto-html/quarto.js"></script>
+<script src="excise_doc_v2_files/libs/quarto-html/popper.min.js"></script>
+<script src="excise_doc_v2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="excise_doc_v2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="excise_doc_v2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="excise_doc_v2_files/libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="excise_doc_v2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="excise_doc_v2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="excise_doc_v2_files/libs/bootstrap/bootstrap-8a79a254b8e706d3c925cde0a310d4f0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="excise_doc_v2.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="excise_doc_v2.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">excise report</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Krisna Gupta </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 15, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">executive summary</div>
+    This report presents our analysis on mainly estimating elasticity and forecasting future excise and revenue for DGCE. The data are telling a story that manufactured kreteks (SKM) are on the down swing after 2018 and SKT is on the rise. Intuitively, we know that some smokers are switching. However, these data won’t permit us to tease out this relationship more precisely amid limitation of information of the market price of each cateogy. However, there is an indication from using BPS survey price, albeit a slight difference in categories, that an increase of a box price of unfiltered kretek leads by 1% leads to a decrease in SKM production by 5%. Meanwhile, an increase of a box price by 1% of unfiltered and filtered kretek is associated with a change in SKT quantity by -5% and 7% respectively.
+  </div>
+</div>
+
+
+</header>
+
+
+<section id="sec-introduction" class="level2">
+<h2 class="anchored" data-anchor-id="sec-introduction">Introduction</h2>
+<p>Nicotine is addictive and harmful. Controlling tobacco use via taxation requires understanding of demand elasticity of the good <span class="citation" data-cites="RN">(<a href="#ref-RN" role="doc-biblioref">Hidayat and Thabrany 2011</a>)</span>. ADBI was tasked to help Min o Finance to calculate the elasticity of cigarette excise.</p>
+<p>The study become even more important since the introduction of electric cigarettes. It can be argued that e-cigs create a substitute to the cigarettes, and may be an introduction to more traditional tobacco cigarettes <span class="citation" data-cites="binns">(<a href="#ref-binns" role="doc-biblioref">Binns, Lee, and Low 2018</a>)</span>. DGCE was starting to collect data (and excise) for e-cigarettes since 2020.</p>
+<p>We must answer this following question: How much is the cross-price substitution between traditional cigarettes?</p>
+<p>While all of these questions are extremely important, we find the answer to not be straight-forward. Few literatures actually looking at this. But the main problem is the lack of good quality data in answering those questions, particularly on e-cigarettes.</p>
+</section>
+<section id="literatures" class="level2">
+<h2 class="anchored" data-anchor-id="literatures">Literatures</h2>
+<p>We rely on four papers for our desk investigation which is summarized in <a href="#tbl-1" class="quarto-xref">Table&nbsp;1</a>.</p>
+<p><span class="citation" data-cites="RN">Hidayat and Thabrany (<a href="#ref-RN" role="doc-biblioref">2011</a>)</span> investigates whether smokers in general are myopic or rational addicts. They utilise 2SLS and GMM along with IFLS data with 1783 total observations to conduct their study. According to this consumer-side study, the price elasticity of demand for traditional tobacco is around -0.38 to -0.57. They also controls for income with total expenditure as the proxy.</p>
+<p><span class="citation" data-cites="nach">Djutaharta et al. (<a href="#ref-nach" role="doc-biblioref">2021</a>)</span> look at the impact of cigarette prices to household nutrient intake. Collecting various household surveys in 2014, they are able to observe a cross-section 285,400 households. They use unit value as the price which is sourced from PODES, one of the household survey. While their goal is not to look at elasticity, they find that 1% increase in cigarette prices lead to an increase of budget share for cigarettes by 0.0737 percentage point.</p>
+<p><span class="citation" data-cites="prasetyo618">Prasetyo and Adrison (<a href="#ref-prasetyo618" role="doc-biblioref">2020</a>)</span> utilise transactional data on the firm level, 2005-2017, with total 32,711 observations (around 2,500 firms per year). They get the data from DGCE. They look at the tax-price pass through, which is the impact of changes in tax to the firms’ pricing strategy. They also examine the pass-through effect on three types of traditional cigarettes, namely SKT, SKM and SPM. They find that an increase of 1% of tax rate leads to an increase of prices by around 0.15, 0.36 and 0.77 for SKT, SKM and SPM respectively.</p>
+<p>Lastly, <span class="citation" data-cites="cisdi">Center for Indonesia’s Strategic Development Initiatives (<a href="#ref-cisdi" role="doc-biblioref">2024</a>)</span> estimate to what extent price of cigarettes correlates with cessation (price elasticity of cessation). The premise is a high enough excise (which consequently increase prices) would lead to more people quit smoking. They use national and provincial level price. They use various individual level characteristics as control. They find that 10-percent increase in cigarette price increase the probability of cessation by 0.15-0.17 percent. They use a 2021 survey data, Global Adult Tobacco Survey (GATS).</p>
+<div id="tbl-1" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: literature summary
+</figcaption>
+<div aria-describedby="tbl-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>paper</th>
+<th>finding</th>
+<th>data</th>
+<th>obs year</th>
+<th>N</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="citation" data-cites="RN">Hidayat and Thabrany (<a href="#ref-RN" role="doc-biblioref">2011</a>)</span></td>
+<td>elasticity (-0.38 to -0.57)</td>
+<td>IFLS</td>
+<td>1993,1997,2000</td>
+<td>1783</td>
+</tr>
+<tr class="even">
+<td><span class="citation" data-cites="nach">Djutaharta et al. (<a href="#ref-nach" role="doc-biblioref">2021</a>)</span></td>
+<td>budget share</td>
+<td>Susenas, PODES, RISKESDAS</td>
+<td>2014</td>
+<td>285,400</td>
+</tr>
+<tr class="odd">
+<td><span class="citation" data-cites="prasetyo618">Prasetyo and Adrison (<a href="#ref-prasetyo618" role="doc-biblioref">2020</a>)</span></td>
+<td>tax-price passtrough</td>
+<td>firm transactions from DGCE</td>
+<td>2005-2017</td>
+<td>32,711</td>
+</tr>
+<tr class="even">
+<td><span class="citation" data-cites="cisdi">Center for Indonesia’s Strategic Development Initiatives (<a href="#ref-cisdi" role="doc-biblioref">2024</a>)</span></td>
+<td>elasticity of cessation (0.015-0.017)</td>
+<td>GATS</td>
+<td>2021</td>
+<td>9,018</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>For objectives, this report bear similarity with <span class="citation" data-cites="RN">Hidayat and Thabrany (<a href="#ref-RN" role="doc-biblioref">2011</a>)</span> the most, albeit it is indeed important to see a tax-price pass-through a la <span class="citation" data-cites="prasetyo618">Prasetyo and Adrison (<a href="#ref-prasetyo618" role="doc-biblioref">2020</a>)</span>. We do have a production data of different types of cigarettes, but our data lack firm level richness as <span class="citation" data-cites="prasetyo618">Prasetyo and Adrison (<a href="#ref-prasetyo618" role="doc-biblioref">2020</a>)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. <span class="citation" data-cites="cisdi">Center for Indonesia’s Strategic Development Initiatives (<a href="#ref-cisdi" role="doc-biblioref">2024</a>)</span> bear some resemblence but it do not count cross-price elasticity since their price data do not distinguish between machine-made and hand-made. Generally we do not look at the question posed by <span class="citation" data-cites="nach">Djutaharta et al. (<a href="#ref-nach" role="doc-biblioref">2021</a>)</span>, but This is still an important question to adhere by DGCE. The reason is because using excise as an instrument to reduce smoking may lead to a reduction of a household’s nutrient intake.</p>
+<p><span class="citation" data-cites="prasetyo618">Prasetyo and Adrison (<a href="#ref-prasetyo618" role="doc-biblioref">2020</a>)</span> offers various insight to the cigarettes market in Indonesia. The industry is highly oligopolistic and often offers low price of cigarettes to avoid paying progressive exicse. This leads to higher number of smokers<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Low potential revenue,thus may be outweighed by the higher cost of treatment of tobacco-related diseases.</p>
+<p>On the last note, none of those are looking at electric cigarettes.</p>
+<p>On Method, we generally use <span class="citation" data-cites="zellner">Zellner (<a href="#ref-zellner" role="doc-biblioref">1963</a>)</span> which developed Seemingly Unrelated Regression (SUR) which is widely used for cross-price elasticity estimation.</p>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>This paper relies solely on data sourced by DGCE. The data contains information on both traditional and e-cigarettes, albeit on different details. We will first discuss about the traditional cigarettes and then proceed to e-cigarettes.</p>
+<section id="traditional-cigarette-data" class="level3">
+<h3 class="anchored" data-anchor-id="traditional-cigarette-data">Traditional cigarette data</h3>
+<p>According to Peraturan Menteri Keuangan (PMK) 192/PMK.010/2021 Tentang TARIF CUKAI HASILTEMBAKAU BERUPA SIGARET, CERUTU, ROKOK DAUN ATAU KLOBOT, DAN TEMBAKAU IRIS, There are three types (jenis) of cigarette in Indonesia:</p>
+<ol type="1">
+<li>Sigaret Kretek Mesin (SKM) is a cloved cigarette which utilises machinery in most of its production. This accounts for 70.5% of total number of cigarette production in our dataset.</li>
+<li>Sigaret Putih Mesin (SPM) is an uncloved cigarette which utilises machinery in most of its production. This accounts for 4.68% of total number of cigarette production in our dataset.</li>
+<li>Sigaret Kretek Tangan (SKT) is a cloved cigarette which utilises no machinery at all in its production. This accounts for 24.8% of total number of cigarette production in our dataset. Included in this type is Sigaret Putih Tangan (SPT) which is the uncloved version of SKT, but we generally includes it here because they have the exact same tax structure.</li>
+</ol>
+<p>Actually there are other types of cigarettes but these three are the most important and we only have dataset on these three.</p>
+<p>For excise purpose, these three types are divided further into categories (golongan) based on how much a single firm produces each category. i.e., the tax structure tries to be progressive in that it put larger firm (e.g., producing so much annualy) on a higher tax brackett. Table 1 shows these categories and I put example from PMK 192/PMK.010/2021 (of course this table evolves as new PMK is produced)</p>
+<p>THere are two types of prices in our dataset: 1. Harga Jual Eceran (HJE) is a price used by the government to set how much is the excise per cigarette. 2. Harga Transaksi Pasar (HTP) is a price paid by the consumer. This price is crucial but we have very little data point for this (i.e., many missing obs because MOF does not conduct survey every month)</p>
+<div id="tbl-2" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: example from the PMK 192/PMK.010/2021
+</figcaption>
+<div aria-describedby="tbl-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>type/category</th>
+<th>Quantity produced</th>
+<th>HJE (kIDR)</th>
+<th>tariff (kIDR)</th>
+<th>AVE(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SKM1</td>
+<td>&gt; 3 billion cigarettes</td>
+<td>1.95</td>
+<td>.985</td>
+<td>50.51</td>
+</tr>
+<tr class="even">
+<td>SKM2</td>
+<td>&lt;= 3 billion cigarettes</td>
+<td>1.14</td>
+<td>.6</td>
+<td>52.63</td>
+</tr>
+<tr class="odd">
+<td>SPM1</td>
+<td>&gt; 3 billion cigarettes</td>
+<td>2.005</td>
+<td>1.065</td>
+<td>53.12</td>
+</tr>
+<tr class="even">
+<td>SPM2</td>
+<td>&lt;= 3 billion cigarettes</td>
+<td>1.135</td>
+<td>.635</td>
+<td>55.94</td>
+</tr>
+<tr class="odd">
+<td>SKT1a</td>
+<td>&gt; 2 billion cigarettes</td>
+<td>&gt;1.635</td>
+<td>.44</td>
+<td>26.91</td>
+</tr>
+<tr class="even">
+<td>SKT1b</td>
+<td>&gt; 2 billion cigarettes</td>
+<td>&gt;1.135</td>
+<td>.345</td>
+<td>30.4</td>
+</tr>
+<tr class="odd">
+<td>SKT2</td>
+<td>(0.5 &lt; x &lt; 2) billion cigarettes</td>
+<td>&gt;600</td>
+<td>.205</td>
+<td>34.2</td>
+</tr>
+<tr class="even">
+<td>SKT3</td>
+<td>&lt;= 0.5 billion cigarettes</td>
+<td>&gt;505</td>
+<td>.115</td>
+<td>22.77</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>From <a href="#tbl-2" class="quarto-xref">Table&nbsp;2</a> we can see that handrolled types are taxed lower. This trend continues in the future iterations of the PMK, in fact.</p>
+<p>variables in this dataset is constructed such that <span class="math inline">\(V_{ij}\)</span> be a variable where <span class="math inline">\(i \in \{l,q,t,r,p\}\)</span> and <span class="math inline">\(j \in \{skm1,skm2,spm1,spm2,skt1a,skt1b,skt2,skt3\}\)</span>. l=HJE, q=production quantity, t=specific rate, r=total revenue, p=HTP. members of <span class="math inline">\(j\)</span> is just type/category but lowercase.</p>
+<p>We also have mo=month which is the time index for the dataset which spans from Jan 2014 to Dec 2023.</p>
+<p>Therefore, variable names in mydataset should look like this:</p>
+<blockquote class="blockquote">
+<p>mo lskm1 lskm2 lspm1 lspm2 lskt1a lskt1b lskt2 lskt3 qskm1 qskm2 qspm1 qspm2 qskt1a qskt1b qskt2 qskt3 tskm1 tskm2 tspm1 tspm2 tskt1a tskt1b tskt2 tskt3 rskm1 rskm2 rspm1 rspm2 rskt1a rskt1b rskt2 rskt3 pskm1 pskm2 pspm1 pspm2 pskt1a pskt1b pskt2 pskt3</p>
+</blockquote>
+<p>WHO suggests any tax rate below 70% is deemed too small to reduce smoking <span class="citation" data-cites="prasetyo618">(<a href="#ref-prasetyo618" role="doc-biblioref">Prasetyo and Adrison 2020</a>)</span>.</p>
+<p>Since the market price data is quite limited, I created some weighted-aggregate variables which is variable names without number. For example, I create:</p>
+<p><span class="math display">\[
+pskm = \frac{pskm1 \times qskm1 + pskm2 \times qskm2}{qskm1 + qskm2}
+\]</span></p>
+<p>some prices (both legal and market) and tariff moves together and highly correlated. This is very apparent in SKT, where SKT1a,SKT1b, and SKT2 moves together.</p>
+</section>
+<section id="visualization" class="level3">
+<h3 class="anchored" data-anchor-id="visualization">Visualization</h3>
+<p>Data is visualized. I arrange the visualization using a typical pattern. Each variable is visualized 4 times. The first three are each category in each three types (SKM, SKT, and SPM).</p>
+<p>For example, top-left panel is SKM1 and SKM2, top right is SPM1 and SPM2, and the bottom-left panel is SKT1a, SKT1b, SKT2 and SKT3. The bottom-right shows either the aggregate or the weighted average of SKM, SPM, and SKT.</p>
+<div id="fig-q" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-q-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/demand.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-q-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Quantity demand for excise ribbon
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-q" class="quarto-xref">Figure&nbsp;1</a> represents the quantity demand of excise ribbon, which is measured by stick. We can see some trend. The SKM1 seems to be gradually reduced, with a clear downtrend starting on mid-2018. Meanwhile, SKM2 gradually rises, suggesting a possible bunching, where large firms distribute its production to many smaller firms to get SKM2 tariff brackett.</p>
+<p>Similar trend can be seen in SPM, which shows clear convergence where the more expensive one dwindles down. On aggregate, we can see clear reduction in this type. Lastly, we can see clear winner from SKT, which is the SKT3. Again, cutoff point is around mid-2018.</p>
+<div id="fig-r" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/revenue.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Tariff Revenue
+</figcaption>
+</figure>
+</div>
+<p>We can infer similar similar situation from <a href="#fig-r" class="quarto-xref">Figure&nbsp;2</a>, which shows revenue generated from such excise. We do still see upward trend amid increasing tariff overall. However, the stagnation from SPM isn’t matched by the increase in SKT’s revenue.</p>
+<div id="fig-l" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-l-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/hje.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-l-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Legal price per stick (HJE)
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-l" class="quarto-xref">Figure&nbsp;3</a> shows the legal price, HJE. This is the price set by the customs as a tariff reference. The HJE changes only few times in a year, which explains the various flat line.</p>
+<p>We see a noticable reduction of HJE for SKT2 and SKT3 in June 2018. The same cannot be said for the rest of the cigarette types. In June 2020, we see another noticable spike especially in the machine cigarettes. We don’t see the same thing in SKT, however.</p>
+<div id="fig-p" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/htp.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Market price per stick
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-p" class="quarto-xref">Figure&nbsp;4</a> shows the market price surveyed by the customs. Here we have many missing observation (months without a dot) because the customs do not conduct monthly survey. We do see a noticable divergence of price in January 2020 between machine-made and hand-made cigarettes (bottom-right).</p>
+<div id="fig-lp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/htphje.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Ratio between market price and legal price
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-lp" class="quarto-xref">Figure&nbsp;5</a> shows a ratio between market price and legal price. A high HTP/HJE ratio may suggests a degree of market power or high demand. More importantly, if the HTP/HJE ratio generally reasonably flat, then we can use HJE (which observation completes) as a proxy for HTP (which contain missing observations.</p>
+<p>Unfortunately, this ratio varies considerably for all observations.Generally, HTP/HJE ratio is lower for machine-made cigarettes compared to hand-made ones, even reaching below 1 after January 2020. This ratio is driven mainly by the two lowest brackett, SKT2 and SKT3 (lower-left).</p>
+<div id="fig-t" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-t-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/tariff.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Excise tariff per stick
+</figcaption>
+</figure>
+</div>
+<p>Meanwhile, <a href="#fig-t" class="quarto-xref">Figure&nbsp;6</a> shows tariff charged per stick. We can see a pattern resembling the HJE since the tariff is enacted based on HJE. While some SKT got HJE reduction, tariff remains increasing in trend.</p>
+<div id="fig-a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/ave.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Ad-valorem equivalence per stick
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-a" class="quarto-xref">Figure&nbsp;7</a> shows an ad-valorem equivalence (AVE) of the stick, i.e., tariff/HJE ratio. From this graph, we can see that the AVE changes drastically in January 2018, confirming the possible correlation with noticeable changes in quantity demand in <a href="#fig-q" class="quarto-xref">Figure&nbsp;1</a>. Additionally, we see a divergence of AVE between machine-made and hand-made in the 2020s onwards.</p>
+<p>We know that the SKM is by far the driver of revenue for the customs. However, its demand is being caught-up by hand-made cigarette, the SKT. Additionally, the SKM demand seems to switch from SKM1 to SKM2 as well. We note at least two important timing, which is the year 2018 and 2020 where we see a noticeable changes in SKM1, SKM2, and SKT.</p>
+</section>
+</section>
+<section id="elasticity-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="elasticity-estimation">Elasticity estimation</h2>
+<section id="theoretical-concept" class="level3">
+<h3 class="anchored" data-anchor-id="theoretical-concept">Theoretical concept</h3>
+<p>Let a standard downward-sloping demand function:</p>
+<p><span class="math display">\[
+Q_i=AP_i^{-\varepsilon}Y^{\gamma}\prod_{j \in -i}P_j^{\varepsilon_j}
+\]</span></p>
+<p>which can be approximately log-linearized</p>
+<p><span class="math display">\[
+q_{i}=a-\varepsilon p_{i} + \gamma y_{i}+\sum_{j\in -i} \varepsilon_j p_j\pm \epsilon_{i}
+\]</span></p>
+<p>where a lowercase is the log version of its uppercase counterparts. We can, thus, econometrically estimated the above equation with a regression.</p>
+<p>We assume an iid <span class="math inline">\(\epsilon_{it}\)</span> for now and uses own-price elasticity since we lack information on the price of electric cigs. The parameter <span class="math inline">\(\varepsilon\)</span> is the own-price elasticity of demand, which we expect to be negative, while <span class="math inline">\(\gamma\)</span> is the income elasticity of demand which is assumed to be positive. We expect the most important <span class="math inline">\(\varepsilon_j\)</span>, the cross-price elasticity variable, to have positive number.</p>
+</section>
+<section id="estimation" class="level3">
+<h3 class="anchored" data-anchor-id="estimation">Estimation</h3>
+<p>Unfortunately, data provided by the customs for this project does not allow for a good measure for elasticity estimation. The critical data point needed is the price of cigarettes. With the variety of Indonesia’s tariff structure, much more data point is required to get the cross-price elasticity. Turns out, even if I reduce the observation to just three categories, the parameter that is acquired still do not reflect the intuition. Of course testing robustness by clustering is also impossible since the data point itself is not enough.</p>
+<p>There is a dataset by <span class="citation" data-cites="bps">Statistik (<a href="#ref-bps" role="doc-biblioref">n.d.</a>)</span>, the Indonesian statistical body. It shows various monthly consumer price which published annually. There are three cigarette categories in the publication: (1) Kretek unfiltered, (2) kretek filtered, and (3) non-kretek. It provides us with a decent monthly price without any missing. Perfect for this exercise. However, the three categories are not exactly equates what I try to estimate. Additionally, the unit used is box instead of stick. Sadly, the amount of sticks in a box varies between brand.</p>
+<p>The salvation is that filtered kretek is often associated with machine-made kretek since filtered cigarettes require a good precision only machine can provide. While this may not always true (possible some filtered kretek is handmade and some unfiltered kretek is machine-made), we can try to use this as a proxy since the variation may be small enough. Note that even if this association is true, we still cannot understand the movement from high-production tier to low-production tier within the same category.</p>
+<p>I code these three prices in the project as follows:</p>
+<div id="tbl-3" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Prices categories from BPS
+</figcaption>
+<div aria-describedby="tbl-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th>category</th>
+<th>code</th>
+<th>association</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Price of a box of unfiltered kretek</td>
+<td>pk</td>
+<td>skt</td>
+</tr>
+<tr class="even">
+<td>Price of a box of filtered kretek</td>
+<td>pkf</td>
+<td>skm</td>
+</tr>
+<tr class="odd">
+<td>Price of a box of non-kretek</td>
+<td>pp</td>
+<td>spm</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="fig-bps" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic/bps.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Price per box by BPS
+</figcaption>
+</figure>
+</div>
+<p>This is also reflected by the price: as can be seen on <a href="#fig-bps" class="quarto-xref">Figure&nbsp;8</a>, the price of a box of unfiltered kretek is always lower compared to the other two prices. While the association as presented in <a href="#tbl-3" class="quarto-xref">Table&nbsp;3</a> can be debated, the amount of data provided can be useful.</p>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<p>I present the result from log quantity vs log price regression.</p>
+<div id="tbl-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Table 4
+</figcaption>
+<div aria-describedby="tbl-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="reg/qbps.png" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+<p><a href="#tbl-4" class="quarto-xref">Table&nbsp;4</a> shows the results from the Q vs P regression aka the price elasticity. The own-price elasticity of SKM is negative but not statistically significant. However, I find a positive and significant at 5% of cross-price elasticity between unfiltered kretek price (pk) and SKM. This results suggest that an increase of the box price of unfiltered Kretek by 1% strongly associated with a reduction in quantity production of SKM by 5.33%. There is a negative association between non-kretek cigarette and SKM quantity which is kinda puzzling.</p>
+<p>The results from hand-made kretek (lqskt) is stronger. It has cross-price elasticity of nearly 7% with filtered cigarette price. Additionally, its own-price elasticity is -5.712%. Again, I have a puzzling result from white cigarette.</p>
+<p>This result seems promising in terms of following with the theory and the descriptive from visualization. It may be that the suggestive association from <a href="#tbl-3" class="quarto-xref">Table&nbsp;3</a> is quite plausible. Unfortunately the box-price nature of BPS survey do not allow for more analysis such as ad-valorem equivalent tariff because tariff is calculated per stick, not box. Variability of number of stick in a box means we cannot assume how many stick per box in aggregate. More importantly, it is possible that firms dynamically change the number of stick in a box in respons to changing tariff structure.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>In this report, we tried to find a demand elasticity. We can see from line chart that the demand for SKM is decreasing quite fast since 2018, while SKT picks up the slack. The SKM decrease is driven mainly by SKM1, which is produced by large firms. SKM2 rises, suggesting a possible bunching. Meanwhile, The SKT is increasing, with SKT3 (which is produced by the smallest firms) leading the charge.</p>
+<p>The lack of HTP data is a major problem in our analysis. We can see that the price elasticity is not as expected, with most of the own-price elasticity being positive. This is likely due to the lack of degree of freedom. Our second-best approach is exploiting AVE, which is the ratio between specific tariff and HJE, a reference price set by the government. While HJE seems to be flat, we did find some evidence that there is a strong relationship between HJE and HTP. We do get somewhat expected data from AVE regression, but a better quality data would certainly improve the analysis.</p>
+</section>
+<section id="references" class="level2 unnumbered">
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-binns" class="csl-entry" role="listitem">
+Binns, Colin, Mi Kyung Lee, and Wah Yun Low. 2018. <span>“Children and e-Cigarettes: A New Threat to Health.”</span> <em>Asia Pacific Journal of Public Health</em> 30 (4): 315–20. <a href="https://doi.org/10.1177/1010539518783808">https://doi.org/10.1177/1010539518783808</a>.
+</div>
+<div id="ref-cisdi" class="csl-entry" role="listitem">
+Center for Indonesia’s Strategic Development Initiatives. 2024. <em>The Impacts of Cigarette Prices on Adult Smoking Cessation in Indonesia</em>. Book. Jakarta: CISDI. <a href="https://cisdi.org/en/research-and-publication/publication/impact-of-cigarette-prices-on-adult-smoking-cessation-in-indonesia">https://cisdi.org/en/research-and-publication/publication/impact-of-cigarette-prices-on-adult-smoking-cessation-in-indonesia</a>.
+</div>
+<div id="ref-nach" class="csl-entry" role="listitem">
+Djutaharta, Triasih, Nachrowi D. Nachrowi, Aris Ananta, and Drajat Martianto. 2021. <span>“Impact of Price and Non-Price Policies on Household Cigarette Consumption and Nutrient Intake in Smoking-Tolerant Indonesia.”</span> <em>BMJ Open</em> 11 (1): e039211–11.
+</div>
+<div id="ref-RN" class="csl-entry" role="listitem">
+Hidayat, Budi, and Hasbullah Thabrany. 2011. <span>“Are Smokers Rational Addicts? Empirical Evidence from the Indonesian Family Life Survey.”</span> Journal Article. <em>Harm Reduction Journal</em> 8: 6. https://doi.org/<a href="https://doi.org/10.1186/1477-7517-8-6">https://doi.org/10.1186/1477-7517-8-6</a>.
+</div>
+<div id="ref-prasetyo618" class="csl-entry" role="listitem">
+Prasetyo, Bagus Wahyu, and Vid Adrison. 2020. <span>“Cigarette Prices in a Complex Cigarette Tax System: Empirical Evidence from Indonesia.”</span> <em>Tobacco Control</em> 29 (6): 618–23. <a href="https://doi.org/10.1136/tobaccocontrol-2018-054872">https://doi.org/10.1136/tobaccocontrol-2018-054872</a>.
+</div>
+<div id="ref-bps" class="csl-entry" role="listitem">
+Statistik, Badan Pusat. n.d. <span>“Harga Konsumen Nasional Beberapa Barang Dan Jasa.”</span> <a href="https://www.bps.go.id/id/publication/2024/04/29/fd79b57254ce3c48505c1c86/harga-konsumen-nasional-beberapa-barang-dan-jasa-2023.html">https://www.bps.go.id/id/publication/2024/04/29/fd79b57254ce3c48505c1c86/harga-konsumen-nasional-beberapa-barang-dan-jasa-2023.html</a>.
+</div>
+<div id="ref-zellner" class="csl-entry" role="listitem">
+Zellner, Arnold. 1963. <span>“Estimators for Seemingly Unrelated Regression Equations: Some Exact Finite Sample Results.”</span> Journal Article. <em>Journal of the American Statistical Association</em> 58 (304): 977–92. <a href="https://doi.org/10.2307/2283326">https://doi.org/10.2307/2283326</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>interestingly, they also sourced the data from DGCE.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>adult male smokers increase in share from 60.6% in 2000 to 76.1%<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

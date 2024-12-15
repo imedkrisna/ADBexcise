@@ -1,0 +1,233 @@
+---
+title: "excise report"
+author: "Krisna Gupta"
+institute: ""
+date: last-modified
+date-format: long
+bibliography: ref.bib
+abstract: "This report presents our analysis on mainly estimating elasticity and forecasting future excise and revenue for DGCE. The data are telling a story that manufactured kreteks (SKM) are on the down swing after 2018 and SKT is on the rise. Intuitively, we know that some smokers are switching. However, these data won’t permit us to tease out this relationship more precisely amid limitation of information of the market price of each cateogy. However, there is an indication from using BPS survey price, albeit a slight difference in categories, that an increase of a box price of unfiltered kretek leads by 1% leads to a decrease in SKM production by 5%. Meanwhile, an increase of a box price by 1% of unfiltered and filtered kretek is associated with a change in SKT quantity by  -5% and 7% respectively."
+abstract-title: "executive summary"
+format:
+  html:
+    code-fold: true
+  pdf:
+    documentclass: scrreprt
+    papersize: a4
+  docx:
+    toc: false
+---
+
+## Introduction {#sec-introduction}
+
+Nicotine is addictive and harmful. Controlling tobacco use via taxation requires understanding of demand elasticity of the good [@RN]. ADBI was tasked to help Min o Finance to calculate the elasticity of cigarette excise.
+
+The study become even more important since the introduction of electric cigarettes. It can be argued that e-cigs create a substitute to the cigarettes, and may be an introduction to more traditional tobacco cigarettes [@binns]. DGCE was starting to collect data (and excise) for e-cigarettes since 2020.
+
+We must answer this following question: How much is the cross-price substitution between traditional cigarettes?
+
+While all of these questions are extremely important, we find the answer to not be straight-forward. Few literatures actually looking at this. But the main problem is the lack of good quality data in answering those questions, particularly on e-cigarettes.
+
+## Literatures
+
+We rely on four papers for our desk investigation which is summarized in @tbl-1.
+
+@RN investigates whether smokers in general are myopic or rational addicts. They utilise 2SLS and GMM along with IFLS data with 1783 total observations to conduct their study. According to this consumer-side study, the price elasticity of demand for traditional tobacco is around -0.38 to -0.57. They also controls for income with total expenditure as the proxy.
+
+@nach look at the impact of cigarette prices to household nutrient intake. Collecting various household surveys in 2014, they are able to observe a cross-section 285,400 households. They use unit value as the price which is sourced from PODES, one of the household survey. While their goal is not to look at elasticity, they find that 1% increase in cigarette prices lead to an increase of budget share for cigarettes by 0.0737 percentage point.
+
+@prasetyo618 utilise transactional data on the firm level, 2005-2017, with total 32,711 observations (around 2,500 firms per year). They get the data from DGCE. They look at the tax-price pass through, which is the impact of changes in tax to the firms' pricing strategy. They also examine the pass-through effect on three types of traditional cigarettes, namely SKT, SKM and SPM. They find that an increase of 1% of tax rate leads to an increase of prices by around 0.15, 0.36 and 0.77 for SKT, SKM and SPM respectively.
+
+Lastly, @cisdi estimate to what extent price of cigarettes correlates with cessation (price elasticity of cessation). The premise is a high enough excise (which consequently increase prices) would lead to more people quit smoking. They use national and provincial level price. They use various individual level characteristics as control. They find that 10-percent increase in cigarette price increase the probability of cessation by 0.15-0.17 percent. They use a 2021 survey data, Global Adult Tobacco Survey (GATS).
+
+| paper | finding | data | obs year | N |
+|---------------|---------------|---------------|---------------|---------------|
+| @RN | elasticity (-0.38 to -0.57) | IFLS | 1993,1997,2000 | 1783 |
+| @nach | budget share | Susenas, PODES, RISKESDAS | 2014 | 285,400 |
+| @prasetyo618 | tax-price passtrough | firm transactions from DGCE | 2005-2017 | 32,711 |
+| @cisdi | elasticity of cessation (0.015-0.017) | GATS | 2021 | 9,018 |
+
+: literature summary {#tbl-1 .striped .hover}
+
+For objectives, this report bear similarity with @RN the most, albeit it is indeed important to see a tax-price pass-through a la @prasetyo618. We do have a production data of different types of cigarettes, but our data lack firm level richness as @prasetyo618[^1]. @cisdi bear some resemblence but it do not count cross-price elasticity since their price data do not distinguish between machine-made and hand-made. Generally we do not look at the question posed by @nach, but This is still an important question to adhere by DGCE. The reason is because using excise as an instrument to reduce smoking may lead to a reduction of a household's nutrient intake.
+
+[^1]: interestingly, they also sourced the data from DGCE.
+
+@prasetyo618 offers various insight to the cigarettes market in Indonesia. The industry is highly oligopolistic and often offers low price of cigarettes to avoid paying progressive exicse. This leads to higher number of smokers[^2]. Low potential revenue,thus may be outweighed by the higher cost of treatment of tobacco-related diseases.
+
+[^2]: adult male smokers increase in share from 60.6% in 2000 to 76.1%
+
+On the last note, none of those are looking at electric cigarettes.
+
+On Method, we generally use @zellner which developed Seemingly Unrelated Regression (SUR) which is widely used for cross-price elasticity estimation.
+
+## Data
+
+This paper relies solely on data sourced by DGCE. The data contains information on both traditional and e-cigarettes, albeit on different details. We will first discuss about the traditional cigarettes and then proceed to e-cigarettes.
+
+### Traditional cigarette data
+
+According to Peraturan Menteri Keuangan (PMK) 192/PMK.010/2021 Tentang TARIF CUKAI HASILTEMBAKAU BERUPA SIGARET, CERUTU, ROKOK DAUN ATAU KLOBOT, DAN TEMBAKAU IRIS, There are three types (jenis) of cigarette in Indonesia:
+
+1.  Sigaret Kretek Mesin (SKM) is a cloved cigarette which utilises machinery in most of its production. This accounts for 70.5% of total number of cigarette production in our dataset.
+2.  Sigaret Putih Mesin (SPM) is an uncloved cigarette which utilises machinery in most of its production. This accounts for 4.68% of total number of cigarette production in our dataset.
+3.  Sigaret Kretek Tangan (SKT) is a cloved cigarette which utilises no machinery at all in its production. This accounts for 24.8% of total number of cigarette production in our dataset. Included in this type is Sigaret Putih Tangan (SPT) which is the uncloved version of SKT, but we generally includes it here because they have the exact same tax structure.
+
+Actually there are other types of cigarettes but these three are the most important and we only have dataset on these three.
+
+For excise purpose, these three types are divided further into categories (golongan) based on how much a single firm produces each category. i.e., the tax structure tries to be progressive in that it put larger firm (e.g., producing so much annualy) on a higher tax brackett. Table 1 shows these categories and I put example from PMK 192/PMK.010/2021 (of course this table evolves as new PMK is produced)
+
+THere are two types of prices in our dataset: 1. Harga Jual Eceran (HJE) is a price used by the government to set how much is the excise per cigarette. 2. Harga Transaksi Pasar (HTP) is a price paid by the consumer. This price is crucial but we have very little data point for this (i.e., many missing obs because MOF does not conduct survey every month)
+
+| type/category | Quantity produced | HJE (kIDR) | tariff (kIDR) | AVE(%) |
+|---------------|---------------|---------------|---------------|---------------|
+| SKM1 | \> 3 billion cigarettes | 1.95 | .985 | 50.51 |
+| SKM2 | \<= 3 billion cigarettes | 1.14 | .6 | 52.63 |
+| SPM1 | \> 3 billion cigarettes | 2.005 | 1.065 | 53.12 |
+| SPM2 | \<= 3 billion cigarettes | 1.135 | .635 | 55.94 |
+| SKT1a | \> 2 billion cigarettes | \>1.635 | .44 | 26.91 |
+| SKT1b | \> 2 billion cigarettes | \>1.135 | .345 | 30.4 |
+| SKT2 | (0.5 \< x \< 2) billion cigarettes | \>600 | .205 | 34.2 |
+| SKT3 | \<= 0.5 billion cigarettes | \>505 | .115 | 22.77 |
+
+: example from the PMK 192/PMK.010/2021 {#tbl-2 .striped .hover}
+
+From @tbl-2 we can see that handrolled types are taxed lower. This trend continues in the future iterations of the PMK, in fact.
+
+variables in this dataset is constructed such that $V_{ij}$ be a variable where $i \in \{l,q,t,r,p\}$ and $j \in \{skm1,skm2,spm1,spm2,skt1a,skt1b,skt2,skt3\}$. l=HJE, q=production quantity, t=specific rate, r=total revenue, p=HTP. members of $j$ is just type/category but lowercase.
+
+We also have mo=month which is the time index for the dataset which spans from Jan 2014 to Dec 2023.
+
+Therefore, variable names in mydataset should look like this:
+
+> mo lskm1 lskm2 lspm1 lspm2 lskt1a lskt1b lskt2 lskt3 qskm1 qskm2 qspm1 qspm2 qskt1a qskt1b qskt2 qskt3 tskm1 tskm2 tspm1 tspm2 tskt1a tskt1b tskt2 tskt3 rskm1 rskm2 rspm1 rspm2 rskt1a rskt1b rskt2 rskt3 pskm1 pskm2 pspm1 pspm2 pskt1a pskt1b pskt2 pskt3
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| error: false
+library(tidyverse)
+library(readxl)
+library(modelsummary)
+library(kableExtra)
+library(gt)
+library(RStata)
+
+theme_set(theme_classic())
+
+
+```
+
+WHO suggests any tax rate below 70% is deemed too small to reduce smoking [@prasetyo618].
+
+Since the market price data is quite limited, I created some weighted-aggregate variables which is variable names without number. For example, I create:
+
+$$
+pskm = \frac{pskm1 \times qskm1 + pskm2 \times qskm2}{qskm1 + qskm2}
+$$
+
+some prices (both legal and market) and tariff moves together and highly correlated. This is very apparent in SKT, where SKT1a,SKT1b, and SKT2 moves together.
+
+### Visualization
+
+Data is visualized. I arrange the visualization using a typical pattern. Each variable is visualized 4 times. The first three are each category in each three types (SKM, SKT, and SPM). 
+
+For example, top-left panel is SKM1 and SKM2, top right is SPM1 and SPM2, and the bottom-left panel is SKT1a, SKT1b, SKT2 and SKT3. The bottom-right shows either the aggregate or the weighted average of SKM, SPM, and SKT.
+
+![Quantity demand for excise ribbon](pic/demand.png){#fig-q}
+
+@fig-q represents the quantity demand of excise ribbon, which is measured by stick. We can see some trend. The SKM1 seems to be gradually reduced, with a clear downtrend starting on mid-2018. Meanwhile, SKM2 gradually rises, suggesting a possible bunching, where large firms distribute its production to many smaller firms to get SKM2 tariff brackett.
+
+Similar trend can be seen in SPM, which shows clear convergence where the more expensive one dwindles down. On aggregate, we can see clear reduction in this type. Lastly, we can see clear winner from SKT, which is the SKT3. Again, cutoff point is around mid-2018.
+
+![Tariff Revenue](pic/revenue.png){#fig-r}
+
+We can infer similar similar situation from @fig-r, which shows revenue generated from such excise. We do still see upward trend amid increasing tariff overall. However, the stagnation from SPM isn't matched by the increase in SKT's revenue.
+
+![Legal price per stick (HJE)](pic/hje.png){#fig-l}
+
+@fig-l shows the legal price, HJE. This is the price set by the customs as a tariff reference. The HJE changes only few times in a year, which explains the various flat line. 
+
+We see a noticable reduction of HJE for SKT2 and SKT3 in June 2018. The same cannot be said for the rest of the cigarette types. In June 2020, we see another noticable spike especially in the machine cigarettes. We don't see the same thing in SKT, however.
+
+![Market price per stick](pic/htp.png){#fig-p}
+
+@fig-p shows the market price surveyed by the customs. Here we have many missing observation (months without a dot) because the customs do not conduct monthly survey. We do see a noticable divergence of price in January 2020 between machine-made and hand-made cigarettes (bottom-right).
+
+![Ratio between market price and legal price](pic/htphje.png){#fig-lp}
+
+@fig-lp shows a ratio between market price and legal price. A high HTP/HJE ratio may suggests a degree of market power or high demand. More importantly, if the HTP/HJE ratio generally reasonably flat, then we can use HJE (which observation completes) as a proxy for HTP (which contain missing observations. 
+
+Unfortunately, this ratio varies considerably for all observations.Generally, HTP/HJE ratio is lower for machine-made cigarettes compared to hand-made ones, even reaching below 1 after January 2020. This ratio is driven mainly by the two lowest brackett, SKT2 and SKT3 (lower-left).
+
+![Excise tariff per stick](pic/tariff.png){#fig-t}
+
+Meanwhile, @fig-t shows tariff charged per stick. We can see a pattern resembling the HJE since the tariff is enacted based on HJE. While some SKT got HJE reduction, tariff remains increasing in trend.
+
+![Ad-valorem equivalence per stick](pic/ave.png){#fig-a}
+
+@fig-a shows an ad-valorem equivalence (AVE) of the stick, i.e., tariff/HJE ratio. From this graph, we can see that the AVE changes drastically in January 2018, confirming the possible correlation with noticeable changes in quantity demand in @fig-q. Additionally, we see a divergence of AVE between machine-made and hand-made in the 2020s onwards.
+
+We know that the SKM is by far the driver of revenue for the customs. However, its demand is being caught-up by hand-made cigarette, the SKT. Additionally, the SKM demand seems to switch from SKM1 to SKM2 as well. We note at least two important timing, which is the year 2018 and 2020 where we see a noticeable changes in SKM1, SKM2, and SKT.
+
+## Elasticity estimation
+
+### Theoretical concept
+
+Let a standard downward-sloping demand function:
+
+$$
+Q_i=AP_i^{-\varepsilon}Y^{\gamma}\prod_{j \in -i}P_j^{\varepsilon_j}
+$$
+
+which can be approximately log-linearized
+
+$$
+q_{i}=a-\varepsilon p_{i} + \gamma y_{i}+\sum_{j\in -i} \varepsilon_j p_j\pm \epsilon_{i}
+$$
+
+where a lowercase is the log version of its uppercase counterparts. We can, thus, econometrically estimated the above equation with a regression. 
+
+We assume an iid $\epsilon_{it}$ for now and uses own-price elasticity since we lack information on the price of electric cigs. The parameter $\varepsilon$ is the own-price elasticity of demand, which we expect to be negative, while $\gamma$ is the income elasticity of demand which is assumed to be positive. We expect the most important $\varepsilon_j$, the cross-price elasticity variable, to have positive number.
+
+### Estimation
+
+Unfortunately, data provided by the customs for this project does not allow for a good measure for elasticity estimation. The critical data point needed is the price of cigarettes. With the variety of Indonesia's tariff structure, much more data point is required to get the cross-price elasticity. Turns out, even if I reduce the observation to just three categories, the parameter that is acquired still do not reflect the intuition. Of course testing robustness by clustering is also impossible since the data point itself is not enough.
+
+There is a dataset by @bps, the Indonesian statistical body. It shows various monthly consumer price which published annually. There are three cigarette categories in the publication: (1) Kretek unfiltered, (2) kretek filtered, and (3) non-kretek. It provides us with a decent monthly price without any missing. Perfect for this exercise. However, the three categories are not exactly equates what I try to estimate. Additionally, the unit used is box instead of stick. Sadly, the amount of sticks in a box varies between brand.
+
+The salvation is that filtered kretek is often associated with machine-made kretek since filtered cigarettes require a good precision only machine can provide. While this may not always true (possible some filtered kretek is handmade and some unfiltered kretek is machine-made), we can try to use this as a proxy since the variation may be small enough. Note that even if this association is true, we still cannot understand the movement from high-production tier to low-production tier within the same category.
+
+I code these three prices in the project as follows:
+
+| category | code | association |
+| --- | --- | --- |
+| Price of a box of unfiltered kretek | pk | skt |
+| Price of a box of filtered kretek | pkf | skm |
+| Price of a box of non-kretek | pp | spm |
+
+: Prices categories from BPS {#tbl-3 .striped .hover}
+
+![Price per box by BPS](pic/bps.png){#fig-bps}
+
+This is also reflected by the price: as can be seen on @fig-bps,  the price of a box of unfiltered kretek is always lower compared to the other two prices. While the association as presented in @tbl-3 can be debated, the amount of data provided can be useful.
+
+### Results
+
+I present the result from log quantity vs log price regression.
+
+![Table 4](reg/qbps.png){#tbl-4}
+
+@tbl-4 shows the results from the Q vs P regression aka the price elasticity. The own-price elasticity of SKM is negative but not statistically significant. However, I find a positive and significant at 5% of cross-price elasticity between unfiltered kretek price (pk) and SKM. This results suggest that an increase of the box price of unfiltered Kretek by 1% strongly associated with a reduction in quantity production of SKM by 5.33%. There is a negative association between non-kretek cigarette and SKM quantity which is kinda puzzling.
+
+The results from hand-made kretek (lqskt) is stronger. It has cross-price elasticity of nearly 7% with filtered cigarette price. Additionally, its own-price elasticity is -5.712%. Again, I have a puzzling result from white cigarette.
+
+This result seems promising in terms of following with the theory and the descriptive from visualization. It may be that the suggestive association from @tbl-3 is quite plausible. Unfortunately the box-price nature of BPS survey do not allow for more analysis such as ad-valorem equivalent tariff because tariff is calculated per stick, not box. Variability of number of stick in a box means we cannot assume how many stick per box in aggregate. More importantly, it is possible that firms dynamically change the number of stick in a box in respons to changing tariff structure.
+
+## Conclusion
+
+In this report, we tried to find a demand elasticity. We can see from line chart that the demand for SKM is decreasing quite fast since 2018, while SKT picks up the slack. The SKM decrease is driven mainly by SKM1, which is produced by large firms. SKM2 rises, suggesting a possible bunching. Meanwhile, The SKT is increasing, with SKT3 (which is produced by the smallest firms) leading the charge.
+
+The lack of HTP data is a major problem in our analysis. We can see that the price elasticity is not as expected, with most of the own-price elasticity being positive. This is likely due to the lack of degree of freedom. Our second-best approach is exploiting AVE, which is the ratio between specific tariff and HJE, a reference price set by the government. While HJE seems to be flat, we did find some evidence that there is a strong relationship between HJE and HTP. We do get somewhat expected data from AVE regression, but a better quality data would certainly improve the analysis.
+
+## References {.unnumbered}
