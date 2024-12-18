@@ -249,7 +249,7 @@ graph export "pic/htphje.png", as(png) name("Graph") replace
 
 graph twoway (line pk pkf pp mo), legend(pos(6) col(4)) name(p4, replace) scheme(s1rcolor)
 
-graph export "pic/bps.png", as(png) name("p4")
+graph export "pic/bps.png", as(png) name("p4") replace
 
 // with SPM
 
