@@ -1,0 +1,75 @@
+---
+title: "Tobacco excise in Indonesia"
+subtitle: ""
+author: "Krisna Gupta"
+institute: "Center for INdonesian Policy Studies"
+date: "2024-09-25"
+date-format: long
+bibliography: ref.bib
+format: 
+  revealjs:
+    theme: [simple,mytheme.scss]
+    chalkboard: true
+    incremental: false
+    transition: convex
+    background-transition: fade
+    slide-number: true
+  beamer: default
+---
+
+## Introduction
+
+Nicotine is addictive and harmful. Controlling tobacco use via taxation requires understanding of demand elasticity of the good [@RN]. ADBI was tasked to help Min o Finance to calculate the elasticity of cigarette excise.
+
+The study become even more important since the introduction of electric cigarettes. It can be argued that e-cigs create a substitute to the cigarettes, and may be an introduction to more traditional tobacco cigarettes [@binns]. DGCE was starting to collect data (and excise) for e-cigarettes since 2020.
+
+We must answer this following question: How much is the cross-price substitution between traditional cigarettes?
+
+While all of these questions are extremely important, we find the answer to not be straight-forward. Few literatures actually looking at this. But the main problem is the lack of good quality data in answering those questions, particularly on e-cigarettes.
+
+## Tax structure {.m}
+
+| type/category | Quantity produced | HJE (kIDR) | tariff (kIDR) | AVE(%) |
+|---------------|---------------|---------------|---------------|---------------|
+| SKM1 | \> 3 billion cigarettes | 1.95 | .985 | 50.51 |
+| SKM2 | \<= 3 billion cigarettes | 1.14 | .6 | 52.63 |
+| SPM1 | \> 3 billion cigarettes | 2.005 | 1.065 | 53.12 |
+| SPM2 | \<= 3 billion cigarettes | 1.135 | .635 | 55.94 |
+| SKT1a | \> 2 billion cigarettes | \>1.635 | .44 | 26.91 |
+| SKT1b | \> 2 billion cigarettes | \>1.135 | .345 | 30.4 |
+| SKT2 | (0.5 \< x \< 2) billion cigarettes | \>600 | .205 | 34.2 |
+| SKT3 | \<= 0.5 billion cigarettes | \>505 | .115 | 22.77 |
+
+WHO suggests any tax rate below 70% is deemed too small to reduce smoking [@prasetyo618].
+
+Since the market price data is quite limited, I created some weighted-aggregate variables which is variable names without number. For example, I create:
+
+$$
+pskm = \frac{pskm1 \times qskm1 + pskm2 \times qskm2}{qskm1 + qskm2}
+$$
+
+## Demand
+
+![](pic/demand.png)
+
+## Tariff revenue
+
+![](pic/revenue.png)
+
+## Market price per stick
+
+![](pic/htp.png)
+
+## Market vs legal price
+
+![](pic/htphje.png)
+
+## Tariff per stick
+
+![](pic/tariff.png)
+
+## Conclusion
+
+In this report, we tried to find a demand elasticity. We can see from line chart that the demand for SKM is decreasing quite fast since 2018, while SKT picks up the slack. The SKM decrease is driven mainly by SKM1, which is produced by large firms. SKM2 rises, suggesting a possible bunching. Meanwhile, The SKT is increasing, with SKT3 (which is produced by the smallest firms) leading the charge.
+
+The lack of HTP data is a major problem in our analysis. We can see that the price elasticity is not as expected, with most of the own-price elasticity being positive. This is likely due to the lack of degree of freedom. Our second-best approach is exploiting AVE, which is the ratio between specific tariff and HJE, a reference price set by the government. While HJE seems to be flat, we did find some evidence that there is a strong relationship between HJE and HTP. We do get somewhat expected data from AVE regression, but a better quality data would certainly improve the analysis.
