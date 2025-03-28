@@ -224,7 +224,7 @@ twoway (line plskt1a plskt1b plskt2 plskt3 mo) (scatter plskt1a plskt1b plskt2 p
 graph combine pl1 pl2 pl3 pl4, col(2) ysize(6) xsize(9) scheme(s1rcolor)
 
 graph export "pic/htphje.png", as(png) name("Graph") replace
-
+//export excel using "use", firstrow(variables) replace
 }
 
 // with SPM

@@ -48,6 +48,17 @@ $$
 pskm = \frac{pskm1 \times qskm1 + pskm2 \times qskm2}{qskm1 + qskm2}
 $$
 
+## Data
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(modelsummary)
+dat<-read_excel("use.xlsx")
+dat<-dat|>select(qskm1,tskm1,rskm1,lskm1,pskm1)
+datasummary(data=dat,)
+```
+
 ## Demand
 
 ![](pic/demand.png)
