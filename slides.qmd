@@ -19,44 +19,66 @@ format:
 
 ## Introduction
 
-Nicotine is addictive and harmful. Controlling tobacco use via taxation requires understanding of demand elasticity of the good [@RN]. ADBI was tasked to help Min o Finance to calculate the elasticity of cigarette excise.
+- Nicotine is addictive and harmful. Controlling tobacco use via taxation requires understanding of demand elasticity of the good [@RN].
 
-The study become even more important since the introduction of electric cigarettes. It can be argued that e-cigs create a substitute to the cigarettes, and may be an introduction to more traditional tobacco cigarettes [@binns]. DGCE was starting to collect data (and excise) for e-cigarettes since 2020.
+- Indonesian excise structure is complicated, with various bracket based on firms' production size and types of cigarettes.
 
-We must answer this following question: How much is the cross-price substitution between traditional cigarettes?
+- It happes amid various target: demand control, revenue generation, and jobs generation.
 
-While all of these questions are extremely important, we find the answer to not be straight-forward. Few literatures actually looking at this. But the main problem is the lack of good quality data in answering those questions, particularly on e-cigarettes.
+- In this project, we are tasked to see whether substitution happened.
 
 ## Tax structure {.m}
 
-| type/category | Quantity produced | HJE (kIDR) | tariff (kIDR) | AVE(%) |
+| type/category | Production | HJE (kIDR) | tariff (kIDR) | AVE(%) |
 |---------------|---------------|---------------|---------------|---------------|
-| SKM1 | \> 3 billion cigarettes | 1.95 | .985 | 50.51 |
-| SKM2 | \<= 3 billion cigarettes | 1.14 | .6 | 52.63 |
-| SPM1 | \> 3 billion cigarettes | 2.005 | 1.065 | 53.12 |
-| SPM2 | \<= 3 billion cigarettes | 1.135 | .635 | 55.94 |
-| SKT1a | \> 2 billion cigarettes | \>1.635 | .44 | 26.91 |
-| SKT1b | \> 2 billion cigarettes | \>1.135 | .345 | 30.4 |
-| SKT2 | (0.5 \< x \< 2) billion cigarettes | \>600 | .205 | 34.2 |
-| SKT3 | \<= 0.5 billion cigarettes | \>505 | .115 | 22.77 |
+| SKM1 | \> 3 billion | 1.95 | .985 | 50.51 |
+| SKM2 | \<= 3 billion | 1.14 | .6 | 52.63 |
+| SPM1 | \> 3 billion | 2.005 | 1.065 | 53.12 |
+| SPM2 | \<= 3 billion | 1.135 | .635 | 55.94 |
+| SKT1a | \> 2 billion | \>1.635 | .44 | 26.91 |
+| SKT1b | \> 2 billion | \>1.135 | .345 | 30.4 |
+| SKT2 | (0.5 \< x \< 2) billion | \>600 | .205 | 34.2 |
+| SKT3 | \<= 0.5 billion | \>505 | .115 | 22.77 |
 
-WHO suggests any tax rate below 70% is deemed too small to reduce smoking [@prasetyo618].
+## The tax structure
 
-Since the market price data is quite limited, I created some weighted-aggregate variables which is variable names without number. For example, I create:
+- The tax structure is lower than what WHO suggests [@prasetyo618].
 
-$$
-pskm = \frac{pskm1 \times qskm1 + pskm2 \times qskm2}{qskm1 + qskm2}
-$$
+- The "job" goal leads to a lower tax rate for lower production firm which encourage larger firms to shrink (or at least discourage small firms to go large)
 
-## Data
+- The "job creation" goal may undermine the "revenue" goal and "control" goal. 
+
+## Data {.m}
 
 ```{r}
 library(tidyverse)
 library(readxl)
 library(modelsummary)
 dat<-read_excel("use.xlsx")
-dat<-dat|>select(qskm1,tskm1,rskm1,lskm1,pskm1)
-datasummary(data=dat,)
+datu<-dat|>select(qskm1,tskm1,rskm1,lskm1,pskm1)
+
+datasummary(qskm1+rskm1+tskm1+lskm1+pskm1~
+              Mean+SD+N+Histogram,
+            data=datu)
+```
+
+We have monthly data on production and excise from 2014-2023 except for market price. Small degree of freedom compared to the tax brackett.
+
+## Market Prices
+
+```{r}
+dut<-dat|>select(mo,pskm1,pskm2,pspm1,pspm2,pskt1a,pskt1b,pskt2,pskt3)
+dut<-dut|>pivot_longer(!mo,names_to = "kind",values_to = "value")
+dut|>ggplot(aes(x=mo,y=value,color=kind))+geom_line(data=dut[!is.na(dut$value),])+geom_point()+
+  theme_classic()
+```
+
+## Base price
+
+```{r}
+dut<-dat|>select(mo,lskm1,lskm2,lspm1,lspm2,lskt1a,lskt1b,lskt2,lskt3)
+dut<-dut|>pivot_longer(!mo,names_to = "kind",values_to = "value")
+dut|>ggplot(aes(x=mo,y=value,color=kind))+geom_line(size=1.1)
 ```
 
 ## Demand
@@ -71,16 +93,47 @@ datasummary(data=dat,)
 
 ![](pic/htp.png)
 
-## Market vs legal price
-
-![](pic/htphje.png)
-
 ## Tariff per stick
 
 ![](pic/tariff.png)
 
+## Analysis
+
+- There are clear negative trend on the higher tariff brackett, positive trend on the lower tariff brackett.
+
+- There is an important cutoff point on early 2018, coincident with the divergence point of the base price.
+
+- Quantity: Hand-rolled kretek (SKT) catched up with the machine kretek (SKM). Limited growth in revenue. Jobs is unclear, but since SKT is more labor intensive, it is possible we have net positive on labor absorption.
+
+- "Control" goal doesn't seem to progress.
+
+## SURE reg {.m}
+
+:::: columns
+::: {.column width=65%}
+![](pic1.png)
+:::
+::: {.column width=35%}
+
+- Use limited (but monthly) box price
+
+- cross-price seems strong.
+
+- filtered=machine is assumed.
+
+- No information how much stick in the box.
+
+:::
+::::
+
 ## Conclusion
 
-In this report, we tried to find a demand elasticity. We can see from line chart that the demand for SKM is decreasing quite fast since 2018, while SKT picks up the slack. The SKM decrease is driven mainly by SKM1, which is produced by large firms. SKM2 rises, suggesting a possible bunching. Meanwhile, The SKT is increasing, with SKT3 (which is produced by the smallest firms) leading the charge.
+- Cannot say too strongly on "substitution" amid price data limitation. E-cigs may have effects, but also no data.
 
-The lack of HTP data is a major problem in our analysis. We can see that the price elasticity is not as expected, with most of the own-price elasticity being positive. This is likely due to the lack of degree of freedom. Our second-best approach is exploiting AVE, which is the ratio between specific tariff and HJE, a reference price set by the government. While HJE seems to be flat, we did find some evidence that there is a strong relationship between HJE and HTP. We do get somewhat expected data from AVE regression, but a better quality data would certainly improve the analysis.
+- More granular data (both firms and retail) would be necessary.
+
+- But support towards substitution is there, with indicative price elasticity of substitution at 5%.
+
+    - without quantity per box, hard to say tax elasticity.
+
+## Referred
